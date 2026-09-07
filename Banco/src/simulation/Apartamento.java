@@ -49,7 +49,7 @@ public class Apartamento extends Financiamento{
         StringBuilder sb = new StringBuilder();
         sb.append("Financiamento de Apartamento\n");
         sb.append("Valor do apartamento: R$ ").append(valorImovel).append("\n");
-        sb.append("Prazo de financiamento: ").append(prazoFinanciamentoEmAnos).append("anos.\n");
+        sb.append("Prazo de financiamento: ").append(prazoFinanciamentoEmAnos).append(" anos.\n");
         sb.append("Taxa de Juros Anual: ").append(taxaJurosAnual).append("%.\n");
         sb.append("Quantidade de vagas na garagem: ").append(numeroDeVagasGaragem).append("\n");
         sb.append("Número do andar: ").append(numeroDoAndar).append("\n");

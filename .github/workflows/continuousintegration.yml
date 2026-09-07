@@ -1,4 +1,4 @@
-name: Continuous Integration teste
+name: Continuous Integration Inicial
 on: 
   pull_request:
     branches:

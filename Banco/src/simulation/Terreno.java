@@ -32,7 +32,7 @@ public class Terreno extends Financiamento {
         StringBuilder sb = new StringBuilder();
         sb.append("Financiamento de Terreno\n");
         sb.append("Valor da terreno: R$ ").append(valorImovel).append("\n");
-        sb.append("Prazo de financiamento: ").append(prazoFinanciamentoEmAnos).append("anos.\n");
+        sb.append("Prazo de financiamento: ").append(prazoFinanciamentoEmAnos).append(" anos.\n");
         sb.append("Taxa de Juros Anual: ").append(taxaJurosAnual).append("%.\n");
         sb.append("Tipo de zoneamento: ").append(tipoDeZona).append("\n");
         sb.append("Valor mensal: R$ ").append(calcularPagamentoMensal()).append("\n");

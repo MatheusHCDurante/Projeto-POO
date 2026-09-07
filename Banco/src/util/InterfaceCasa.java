@@ -18,6 +18,11 @@ public class InterfaceCasa extends InterfaceUsuario {
             throw new ValoresNegativosOuIgualZeroException("O valor informado é zero ou negativo.");
         }
     }
+    private void conferirValoresMinimoImovel(double valor) throws ValoresMinimoImovelException {
+        if (valor < 200000) {
+            throw new ValoresMinimoImovelException("O valor minimo de deve ser 200000,00.");
+        }
+    }
     // Método para conferir se ha valores acima do permitido, para números reais, O VALOR MÍNIMO E MÁXIMO PODE SER ALTERADO.
     private void conferirValoresNaoPermitidosDouble(double valor) throws ValoresAcimaOuAbaixoDoPermitidoException {
         // Caso queira alterar o valor maximo ou mínimo NÃO ESQUECER DE MUDAR A MENSAGEM JUNTO
@@ -40,6 +45,7 @@ public class InterfaceCasa extends InterfaceUsuario {
                 System.out.printf("O valor da casa é: R$%.2f\n", valorImovel);
                 // Confere se há erro relacionado a valores negativos ou zerado.
                 conferirValoresNegativosOuZeroDouble(valorImovel);
+                conferirValoresMinimoImovel(valorImovel);
             // Captura entrada de dados errada, nesse caso qualquer caractere que não seja um número inteiro.
             } catch (InputMismatchException e) {
                 // Caso ocorra o erro, informa ao usuário.
@@ -50,6 +56,9 @@ public class InterfaceCasa extends InterfaceUsuario {
             } catch (ValoresNegativosOuIgualZeroException e) {
                 // Caso ocorra o erro, informa ao usuário.
                 System.out.println("Número negativo, porfavor use apenas números positivos");
+                continue;
+            } catch (ValoresMinimoImovelException e) {
+                System.out.println(e.getMessage());
                 continue;
             }
             return valorImovel;  
