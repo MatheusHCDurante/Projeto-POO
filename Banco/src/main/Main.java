@@ -109,6 +109,14 @@ public class Main {
         listaDeFinanciamento.add(new Terreno(1000000, 2, 10, "Residêncial"));
     }
 
+    public static void carregarFinanciamentosIniciais() {
+        listaDeFinanciamento.add(new Casa(2000, 1, 1.0, 81, 360));
+        listaDeFinanciamento.add(new Casa(2500000, 10, 1.8, 200, 800));
+        listaDeFinanciamento.add(new Apartamento(300000, 20, 3.8, 1, 20));
+        listaDeFinanciamento.add(new Apartamento(154000, 2, 0.8, 3, 75));
+        listaDeFinanciamento.add(new Terreno(1000000, 2, 10, "Residêncial"));
+    }
+
     // Início do main
     public static void main(String[] args) {
         InterfaceCasa interfaceCasa = new InterfaceCasa();
@@ -141,8 +149,9 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         carregarFinanciamentosIniciais();
-        
+
         if (opcaoFinanciamento == 1) {
             // Atributos bases de Financiamento + atributos únicos de Casa.
             double valorImovel = interfaceCasa.obterValorImovel();
@@ -194,6 +203,7 @@ public class Main {
             // Adiciona um novo apartamento na listaDeFinanciamento.
             interfaceApartamento.adicionarALista(valorImovel, prazoFinanciamento, taxaJurosAnual, numeroDeVagasGaragem, numeroDoAndar);
 
+            
             // Instância um novo apartamento, atraves das informações dadas pelo úsuario.
             Financiamento apartamento3 = new Apartamento(valorImovel, prazoFinanciamento, taxaJurosAnual, numeroDeVagasGaragem, numeroDoAndar);
             //Instância o escrito e define como nulo.
@@ -231,7 +241,7 @@ public class Main {
             String tipoZoneamento = interfaceTerreno.obterTipoDeZoneamento();
             // Adiciona um novo terreno na listaDeFinanciamento.
             interfaceTerreno.adicionarALista(valorImovel, prazoFinanciamento, taxaJurosAnual, tipoZoneamento);
-                
+
             // Instância um novo terreno, atraves das informações dadas pelo úsuario.
             Financiamento terreno2 = new Terreno(valorImovel, prazoFinanciamento, taxaJurosAnual, tipoZoneamento);
             // Instância o escritor.
