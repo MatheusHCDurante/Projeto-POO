@@ -2,7 +2,6 @@ package util;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 import static main.Main.listaDeFinanciamento;
 import simulation.Terreno;
 
@@ -12,6 +11,11 @@ public class InterfaceTerreno extends InterfaceUsuario {
     private void conferirValoresNegativosOuZeroDouble(double valor) throws ValoresNegativosOuIgualZeroException {
         if (valor <= 0) {
             throw new ValoresNegativosOuIgualZeroException("O valor informado é zero ou negativo.");
+        }
+    }
+    private void conferirValoresMinimoImovel(double valor) throws ValoresMinimoImovelException {
+        if (valor < 200000) {
+            throw new ValoresMinimoImovelException("O valor minimo de deve ser 200000,00.");
         }
     }
     // Método para conferir se ha valores negativos ou zerado, para números inteiros.
@@ -42,6 +46,7 @@ public class InterfaceTerreno extends InterfaceUsuario {
                 System.out.printf("O valor da casa é: R$%.2f\n", valorImovel);
                 // Confere se há erro relacionado a valores negativos ou zerado.
                 conferirValoresNegativosOuZeroDouble(valorImovel);
+                conferirValoresMinimoImovel(valorImovel);
             // Captura entrada de dados errada, nesse caso qualquer caractere que não seja um número inteiro.  
             } catch (InputMismatchException e) {
                 System.out.println("Porfavor use apenas númerais");
@@ -51,6 +56,9 @@ public class InterfaceTerreno extends InterfaceUsuario {
             } catch (ValoresNegativosOuIgualZeroException e) {
                 // Caso ocorra o erro, informa ao usuário.
                 System.out.println("Número negativo, porfavor use apenas números positivos");
+                continue;
+            } catch (ValoresMinimoImovelException e) {
+                System.out.println(e.getMessage());
                 continue;
             }
             return valorImovel;  
