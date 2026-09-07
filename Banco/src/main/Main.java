@@ -250,8 +250,7 @@ public class Main {
                 e.printStackTrace();
             }
 
-            // Leitura dos dados
-            LerFinanciamentosSalvos();
+            System.out.println("\n=========Serializados:=========\n");
             // Salvamento e leitura da listaDeFinanciamento, Serializado.
             // Serialização das informações da lista de Financiamento
             EscreverDadosSerializados();
