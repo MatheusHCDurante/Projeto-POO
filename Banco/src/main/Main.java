@@ -24,7 +24,6 @@ import util.InterfaceTerreno;
 
 public class Main {
     public static List<Financiamento> listaDeFinanciamento = new ArrayList<Financiamento>();
-
     // Método para fazer a leitura dos dados salvo no arquivo "financiamentos.txt"
     public static void LerFinanciamentosSalvos() {
         FileReader leitor = null;
@@ -72,7 +71,7 @@ public class Main {
             // Cria uma nova saida de objeto no arquivo "Financiamento2.txt", chamado leitor2
             leitor2 = new ObjectInputStream(new FileInputStream("Financiamento2.txt"));
             while (true) { 
-                try {
+                try { 
                     Financiamento obj = (Financiamento)leitor2.readObject();
                     System.out.println(obj);
                 // Captura o erro de fim de arquivo.
@@ -81,7 +80,7 @@ public class Main {
                     System.out.println("Fim do arquivo.");
                     break;
                 } 
-            }
+            } 
         // Captura o erro de Classe não encontrada.
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -92,8 +91,8 @@ public class Main {
         // Captura de erro IO.
         } catch (IOException e) {
             e.printStackTrace(); 
-        }
-    }
+        } 
+    } 
 
     public static void carregarFinanciamentosIniciais() {
         listaDeFinanciamento.add(new Casa(2000, 1, 1.0, 81, 360));
