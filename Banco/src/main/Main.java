@@ -16,7 +16,6 @@ import simulation.Casa;
 import simulation.Financiamento;
 import simulation.Terreno;
 
-import util.InterfaceUsuario;
 import util.InterfaceCasa;
 import util.InterfaceApartamento;
 import util.InterfaceTerreno;
@@ -27,7 +26,7 @@ public class Main {
     public static List<Financiamento> listaDeFinanciamento = new ArrayList<Financiamento>();
 
     // Método para fazer a leitura dos dados salvo no arquivo "financiamentos.txt"
-    public static void lerFinanciamentosSalvos() {
+    public static void LerFinanciamentosSalvos() {
         FileReader leitor = null;
         try {
             leitor = new FileReader("financiamentos.txt");
@@ -45,17 +44,12 @@ public class Main {
         }
     }
 
-        /**
-         * Método para serializar a listaDeFinanciamento no arquivo Financiamento2.txt
-         */
-    public static void  escreverDadosSerializados() {
+    // Método para serializar a listaDeFinanciamento no arquivo Financiamento2.txt
+    public static void EscreverDadosSerializados() {
         ObjectOutputStream escritor2 = null;
         try {
-            /**
-             * Cria uma nova entrada de objeto em um novo arquivo "Financiamento2.txt", chamado escritor2
-             */
-            escritor2 = new ObjectOutputStream(
-                new FileOutputStream("Financiamento2.txt"));
+            // Cria uma nova entrada de objeto em um novo arquivo "Financiamento2.txt", chamado escritor2
+            escritor2 = new ObjectOutputStream(new FileOutputStream("Financiamento2.txt"));
             for (Financiamento obj : listaDeFinanciamento) {
                 escritor2.writeObject(obj);
             }
@@ -72,12 +66,11 @@ public class Main {
     }
 
     // Método para realizar a leitura dos dados serializados no arquivo Financiamento2.txt
-    public static void lerDadosSerializados() {
+    public static void LerDadosSerializados() {
         ObjectInputStream leitor2 = null;
         try {
             // Cria uma nova saida de objeto no arquivo "Financiamento2.txt", chamado leitor2
-            leitor2 = new ObjectInputStream(
-                new FileInputStream("Financiamento2.txt"));
+            leitor2 = new ObjectInputStream(new FileInputStream("Financiamento2.txt"));
             while (true) { 
                 try {
                     Financiamento obj = (Financiamento)leitor2.readObject();
@@ -101,13 +94,6 @@ public class Main {
             e.printStackTrace(); 
         }
     }
-    public static void carregarFinanciamentosIniciais() {
-        listaDeFinanciamento.add(new Casa(2000, 1, 1.0, 81, 360));
-        listaDeFinanciamento.add(new Casa(2500000, 10, 1.8, 200, 800));
-        listaDeFinanciamento.add(new Apartamento(300000, 20, 3.8, 1, 20));
-        listaDeFinanciamento.add(new Apartamento(154000, 2, 0.8, 3, 75));
-        listaDeFinanciamento.add(new Terreno(1000000, 2, 10, "Residêncial"));
-    }
 
     public static void carregarFinanciamentosIniciais() {
         listaDeFinanciamento.add(new Casa(2000, 1, 1.0, 81, 360));
@@ -122,9 +108,8 @@ public class Main {
         InterfaceCasa interfaceCasa = new InterfaceCasa();
         InterfaceApartamento interfaceApartamento = new InterfaceApartamento();
         InterfaceTerreno interfaceTerreno = new InterfaceTerreno();
-
         int opcaoFinanciamento = interfaceCasa.obterTipoDeFinanciamento();
-
+        
         Financiamento casa = (new Casa(2000, 1, 1.0, 81, 360));
         Financiamento casa2 = (new Casa(2500000, 10, 1.8, 200, 800));
         Financiamento apartamento = (new Apartamento(300000, 20, 3.8, 1, 20));
@@ -185,9 +170,9 @@ public class Main {
             System.out.println("\n=========Financiamentos:=========\n");
             // Salvamento e leitura da listaDeFinanciamento, Serializado.
             // Serialização das informações da lista de Financiamento
-            escreverDadosSerializados();
+            EscreverDadosSerializados();
             // Leitura da listaDeFinanciamento serializado.
-            lerDadosSerializados();
+            LerDadosSerializados();
 
             // Imprime o valor total dos imovéis e financiamento.
             Financiamento.imprimirValores();
@@ -226,9 +211,9 @@ public class Main {
             System.out.println("\n=========Financiamentos:=========\n");
             // Salvamento e leitura da listaDeFinanciamento, Serializado.
             // Serialização das informações da lista de Financiamento
-            escreverDadosSerializados();
+            EscreverDadosSerializados();
             // Leitura da listaDeFinanciamento serializado.
-            lerDadosSerializados();
+            LerDadosSerializados();
             // Imprime o valor total dos imovéis e financiamento.
             Financiamento.imprimirValores();
 
@@ -264,9 +249,9 @@ public class Main {
             System.out.println("\n=========Financiamentos:=========\n");
             // Salvamento e leitura da listaDeFinanciamento, Serializado.
             // Serialização das informações da lista de Financiamento
-            escreverDadosSerializados();
+            EscreverDadosSerializados();
             // Leitura da listaDeFinanciamento serializado.
-            lerDadosSerializados();
+            LerDadosSerializados();
             // Imprime o valor total dos imovéis e financiamento.
             Financiamento.imprimirValores();
         }
