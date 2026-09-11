@@ -23,8 +23,10 @@ import util.InterfaceTerreno;
 
 
 public class Main {
-    public static List<Financiamento> listaDeFinanciamento = new ArrayList<Financiamento>();
-    // Método para fazer a leitura dos dados salvo no arquivo "financiamentos.txt"
+    public static List<Financiamento> listaDeFinanciamento = 
+        new ArrayList<Financiamento>();
+    // Método para fazer a leitura dos dados salvo no arquivo 
+    // "financiamentos.txt"
     public static void LerFinanciamentosSalvos() {
         FileReader leitor = null;
         try {
@@ -43,12 +45,15 @@ public class Main {
         }
     }
 
-    // Método para serializar a listaDeFinanciamento no arquivo Financiamento2.txt
+    // Método para serializar a listaDeFinanciamento
+    // no arquivo Financiamento2.txt
     public static void EscreverDadosSerializados() {
         ObjectOutputStream escritor2 = null;
         try {
-            // Cria uma nova entrada de objeto em um novo arquivo "Financiamento2.txt", chamado escritor2
-            escritor2 = new ObjectOutputStream(new FileOutputStream("Financiamento2.txt"));
+            // Cria uma nova entrada de objeto em um novo arquivo 
+            // "Financiamento2.txt", chamado escritor2
+            escritor2 = new ObjectOutputStream(
+                new FileOutputStream("Financiamento2.txt"));
             for (Financiamento obj : listaDeFinanciamento) {
                 escritor2.writeObject(obj);
             }
@@ -57,21 +62,23 @@ public class Main {
         // Captura de erro de arquivos não encontrado.
         } catch (FileNotFoundException e) {
             // Informa o erro ao usuário.
-            System.out.println("Arquivo não encontrado! Reinicando o programa.");
+            System.out.println(
+                "Arquivo não encontrado! Reinicando o programa.");
         // Captura de erro IO.
         } catch (IOException e) {
             e.printStackTrace();
-        }
-    }
-
-    // Método para realizar a leitura dos dados serializados no arquivo Financiamento2.txt
+        } 
+    } 
+    // Método para realizar a leitura dos dados 
+    // serializados no arquivo Financiamento2.txt
     public static void LerDadosSerializados() {
         ObjectInputStream leitor2 = null;
         try {
-            // Cria uma nova saida de objeto no arquivo "Financiamento2.txt", chamado leitor2
+            // Cria uma nova saida de objeto no arquivo 
+            // "Financiamento2.txt", chamado leitor2
             leitor2 = new ObjectInputStream(new FileInputStream("Financiamento2.txt"));
-            while (true) { 
-                try { 
+            while (true) {
+                try {
                     Financiamento obj = (Financiamento)leitor2.readObject();
                     System.out.println(obj);
                 // Captura o erro de fim de arquivo.
@@ -87,7 +94,8 @@ public class Main {
         // Captura de erro de arquivos não encontrado.
         } catch (FileNotFoundException e) {
             // Informa o erro ao usuário.
-            System.out.println("Arquivo não encontrado! Reinicando o programa.");
+            System.out.println(
+                "Arquivo não encontrado! Reinicando o programa.");
         // Captura de erro IO.
         } catch (IOException e) {
             e.printStackTrace(); 
