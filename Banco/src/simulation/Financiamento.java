@@ -3,19 +3,19 @@ import java.io.Serializable;
 import static main.Main.listaDeFinanciamento;
 public abstract class Financiamento implements Serializable {
 
-    // Atributos (define os atributos da classe abstrata Financiamento)
-    /*Valor do Imovel usado no financiamento */
+    /* Atributos (define os atributos da classe abstrata Financiamento) */
+    /**Valor do Imovel usado no financiamento */
     protected  double valorImovel;
-    /*Tempo de duração financiamento em anos */
+    /**Tempo de duração financiamento em anos */
     protected int prazoFinanciamentoEmAnos;
-    /*porcentagem de juros anual*/
+    /**porcentagem de juros anual */
     protected double taxaJurosAnual;
-    /*valor inicial total de todos os imóveis simulados*/
+    /**valor inicial total de todos os imóveis simulados */
     protected static double valorTotalImoveis;
-    /*Valor total dos financiamentos simulados*/
-    private static double valorTotalFinanciamentos;    
+    /**Valor total dos financiamentos simulados */
+    private static double valorTotalFinanciamentos;
 
-    // Construtor
+    /**Construtor */
     public Financiamento(
         double valorImovel,
         int prazoFinanciamento,
@@ -26,23 +26,23 @@ public abstract class Financiamento implements Serializable {
     }
     
     /**
-     * Getters (permite que outras partes do código possam acesar e 
-     * penas ver os dados do atributo, não pode alterar os dados).
+     * Getters (permite que outras partes do código possam acesar e
+     * apenas ver os dados do atributo, não pode alterar os dados).
      * permite que outras partes do código visualize o valor do imovél
-     * (atributo que atualmente é privado/private). 
+     * (atributo que atualmente é privado/private).
      */
     public double getValorImovel() {
         return valorImovel;
     }
     /** 
-     * Permite que outras partes do código visualize o prazo de 
+     * Permite que outras partes do código visualize o prazo de
      * financiamento(atributo que atualmente é privado/private).
      */
      public int getPrazoFinanciamento() {
         return prazoFinanciamentoEmAnos;
     }
     /**
-     * Permite que outras partes do código visualize a taxa de 
+     * Permite que outras partes do código visualize a taxa de
      * juros anual(atributo que atualmente é privado/private).
      */ 
     public double getTaxaJurosAnual() {
@@ -50,7 +50,7 @@ public abstract class Financiamento implements Serializable {
     }
     /**
      * métodos calculo.
-     * Calcula o valor do pagamento mensal. Abstract, o cálculo muda de acordo 
+     * Calcula o valor do pagamento mensal. Abstract, o cálculo muda de acordo
      * com classe(financiamento da classe x tem formas próprias de calculo).
      */
     public abstract double calcularPagamentoMensal();
@@ -63,8 +63,8 @@ public abstract class Financiamento implements Serializable {
     }
 
     /** 
-     * Calcula o valor total da soma de todos os imóveis 
-     * cadastrados na lista listaDeFinanciamento. 
+     * Calcula o valor total da soma de todos os imóveis
+     * cadastrados na lista listaDeFinanciamento.
     */
     static public double calcularValorTotalImoveis() {
             valorTotalImoveis = 0;
@@ -74,7 +74,7 @@ public abstract class Financiamento implements Serializable {
     return valorTotalImoveis;
     }
 
-    // Calcula o valor total da soma de todos os financiamentos cadastrados na lista listaDeFinanciamento. 
+    // Calcula o valor total da soma de todos os financiamentos cadastrados na lista listaDeFinanciamento.
     static public double calcularValorTotalFinanciamentos() {
         valorTotalFinanciamentos = 0;
         for (Financiamento financiamento : listaDeFinanciamento) {
@@ -83,7 +83,7 @@ public abstract class Financiamento implements Serializable {
         return valorTotalFinanciamentos;
     }
 
-    // Método imprimir 
+    // Método imprimir
     // Imprime todas as informações relacionadas ao financiamento, primeiro informa as informações coletadas,
     // depois os resultados das operações necessárias para o calculo do financiamento.
     public abstract void imprimirDados();   

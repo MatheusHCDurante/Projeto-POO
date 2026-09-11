@@ -33,8 +33,8 @@ public class Main {
             leitor = new FileReader("financiamentos.txt");
             int c;
             while ((c = leitor.read()) != -1)
-                System.out.print((char)c);
-            leitor.close(); 
+                System.out.print((char) c);
+            leitor.close();
         // Captura de erro de arquivos não encontrado.
         } catch (FileNotFoundException e) {
             // Informa o erro ao usuário.
@@ -45,9 +45,11 @@ public class Main {
         }
     }
 
-    // Método para serializar a listaDeFinanciamento
-    // no arquivo Financiamento2.txt
-    public static void EscreverDadosSerializados() {
+    /* 
+     * Método para escrever a listaDeFinanciamento
+     * no arquivo serializado Financiamento2.txt
+     */
+    public static void escreverDadosSerializados() {
         ObjectOutputStream escritor2 = null;
         try {
             // Cria uma nova entrada de objeto em um novo arquivo 
@@ -67,27 +69,30 @@ public class Main {
         // Captura de erro IO.
         } catch (IOException e) {
             e.printStackTrace();
-        } 
-    } 
-    // Método para realizar a leitura dos dados 
-    // serializados no arquivo Financiamento2.txt
-    public static void LerDadosSerializados() {
+        }
+    }
+    /*
+     * Método para realizar a leitura dos dados 
+     * serializados no arquivo Financiamento2.txt
+     */
+    public static void lerDadosSerializados() {
         ObjectInputStream leitor2 = null;
         try {
-            // Cria uma nova saida de objeto no arquivo 
+            // Cria uma nova saida de objeto no arquivo
             // "Financiamento2.txt", chamado leitor2
-            leitor2 = new ObjectInputStream(new FileInputStream("Financiamento2.txt"));
+            leitor2 = new ObjectInputStream(
+                new FileInputStream("Financiamento2.txt"));
             while (true) {
                 try {
-                    Financiamento obj = (Financiamento)leitor2.readObject();
+                    Financiamento obj = (Financiamento) leitor2.readObject();
                     System.out.println(obj);
                 // Captura o erro de fim de arquivo.
                 } catch (EOFException e) {
                     // Caso ocorra, informa o usuário.
                     System.out.println("Fim do arquivo.");
                     break;
-                } 
-            } 
+                }
+            }
         // Captura o erro de Classe não encontrada.
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -98,7 +103,7 @@ public class Main {
                 "Arquivo não encontrado! Reinicando o programa.");
         // Captura de erro IO.
         } catch (IOException e) {
-            e.printStackTrace(); 
+            e.printStackTrace();
         } 
     } 
 
@@ -177,9 +182,9 @@ public class Main {
             System.out.println("\n=========Financiamentos:=========\n");
             // Salvamento e leitura da listaDeFinanciamento, Serializado.
             // Serialização das informações da lista de Financiamento
-            EscreverDadosSerializados();
+            escreverDadosSerializados();
             // Leitura da listaDeFinanciamento serializado.
-            LerDadosSerializados();
+            lerDadosSerializados();
 
             // Imprime o valor total dos imovéis e financiamento.
             Financiamento.imprimirValores();
@@ -218,9 +223,9 @@ public class Main {
             System.out.println("\n=========Financiamentos:=========\n");
             // Salvamento e leitura da listaDeFinanciamento, Serializado.
             // Serialização das informações da lista de Financiamento
-            EscreverDadosSerializados();
+            escreverDadosSerializados();
             // Leitura da listaDeFinanciamento serializado.
-            LerDadosSerializados();
+            lerDadosSerializados();
             // Imprime o valor total dos imovéis e financiamento.
             Financiamento.imprimirValores();
 
@@ -256,9 +261,9 @@ public class Main {
             System.out.println("\n=========Financiamentos:=========\n");
             // Salvamento e leitura da listaDeFinanciamento, Serializado.
             // Serialização das informações da lista de Financiamento
-            EscreverDadosSerializados();
+            escreverDadosSerializados();
             // Leitura da listaDeFinanciamento serializado.
-            LerDadosSerializados();
+            lerDadosSerializados();
             // Imprime o valor total dos imovéis e financiamento.
             Financiamento.imprimirValores();
         }
