@@ -23,11 +23,16 @@ import util.InterfaceTerreno;
 
 
 public class Main {
+    /**
+     * Definindo lista que guardara os financiamentos
+     */
     public static List<Financiamento> listaDeFinanciamento = 
         new ArrayList<Financiamento>();
-    // Método para fazer a leitura dos dados salvo no arquivo 
-    // "financiamentos.txt"
-    public static void LerFinanciamentosSalvos() {
+    /**
+     * Método para fazer a leitura dos dados salvo no arquivo
+     * "financiamentos.txt"
+     */
+    public static void lerFinanciamentosSalvos() {
         FileReader leitor = null;
         try {
             leitor = new FileReader("financiamentos.txt");
@@ -45,15 +50,17 @@ public class Main {
         }
     }
 
-    /* 
+    /**
      * Método para escrever a listaDeFinanciamento
      * no arquivo serializado Financiamento2.txt
      */
     public static void escreverDadosSerializados() {
         ObjectOutputStream escritor2 = null;
         try {
-            // Cria uma nova entrada de objeto em um novo arquivo 
-            // "Financiamento2.txt", chamado escritor2
+            /**
+             * Cria uma nova entrada de objeto em um novo arquivo
+             * "Financiamento2.txt", chamado escritor2
+             */
             escritor2 = new ObjectOutputStream(
                 new FileOutputStream("Financiamento2.txt"));
             for (Financiamento obj : listaDeFinanciamento) {
@@ -72,7 +79,7 @@ public class Main {
         }
     }
     /*
-     * Método para realizar a leitura dos dados 
+     * Método para realizar a leitura dos dados
      * serializados no arquivo Financiamento2.txt
      */
     public static void lerDadosSerializados() {
@@ -135,14 +142,14 @@ public class Main {
             escritor.write(apartamento.toString());
             escritor.write(apartamento2.toString());
             escritor.write(terreno.toString());
-            // Finaliza o escritor
+            // Finaliza o escritor 
             escritor.flush();
             escritor.close();
         // Captura de erro de arquivos não encontrado.
         } catch (FileNotFoundException e) {
             // Informa o erro ao usuário.
             System.out.println("Arquivo não encontrado! Reinicando o programa.");
-        // Captura de erro IO.
+        // Captura de erro IO. 
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -150,37 +157,41 @@ public class Main {
         carregarFinanciamentosIniciais();
 
         if (opcaoFinanciamento == 1) {
-            // Atributos bases de Financiamento + atributos únicos de Casa.
+            // Atributos bases de Financiamento + atributos únicos de Casa. 
             double valorImovel = interfaceCasa.obterValorImovel();
             int prazoFinanciamento = interfaceCasa.obterPrazoFinanciamento();
             double taxaJurosAnual = interfaceCasa.obterTaxaJuros();
             double tamanhoAreaConstruida = interfaceCasa.obterTamanhoAreaConstruida();
             double tamanhoDoTerreno = interfaceCasa.obterTamanhoDoTerreno();
-            // Adiciona uma nova casa na listaDeFinanciamento.
+            // Adiciona uma nova casa na listaDeFinanciamento. 
             interfaceCasa.adicionarALista(valorImovel, prazoFinanciamento, taxaJurosAnual, tamanhoAreaConstruida, tamanhoDoTerreno);
 
-            // Salvamento  e leitura de dados
-            // Instância uma nova casa, atraves das informações dadas pelo úsuario.
+            /** 
+             * Salvamento  e leitura de dados
+             * Instância uma nova casa, atraves das informações dadas pelo úsuario.
+             */
             Financiamento casa3 = new Casa(valorImovel, prazoFinanciamento, taxaJurosAnual, prazoFinanciamento, taxaJurosAnual);
-            //Instância o escrito e define como nulo.
+            /** Instância o escrito e define como nulo. */
             try {
-                // Define o escritor com arquivo "financiamentos.txt", e não permite que ele sobrescreva as informações já existente.
+                /**
+                 * Define o escritor com arquivo "financiamentos.txt",
+                 * e não permite que ele sobrescreva as informações já existente.
+                 */
                 escritor = new FileWriter("financiamentos.txt", true);
                 escritor.write(casa3.toString());
-                // Finaliza o escritor
+                /** Finaliza o escritor */
                 escritor.flush();
                 escritor.close();
             // Captura de erro de arquivos não encontrado.
             } catch (FileNotFoundException e) {
-                // Informa o erro ao usuário.
+                // Informa o erro ao usuário. 
                 System.out.println("Arquivo não encontrado! Reinicando o programa.");
-            // Captura de erro IO.
+            // Captura de erro IO. 
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
             System.out.println("\n=========Financiamentos:=========\n");
-            // Salvamento e leitura da listaDeFinanciamento, Serializado.
             // Serialização das informações da lista de Financiamento
             escreverDadosSerializados();
             // Leitura da listaDeFinanciamento serializado.
@@ -203,17 +214,17 @@ public class Main {
             
             // Instância um novo apartamento, atraves das informações dadas pelo úsuario.
             Financiamento apartamento3 = new Apartamento(valorImovel, prazoFinanciamento, taxaJurosAnual, numeroDeVagasGaragem, numeroDoAndar);
-            //Instância o escrito e define como nulo.
+            // Instância o escrito e define como nulo.
             try {
                 // Define o escritor com arquivo "financiamentos.txt", e não permite que ele sobrescreva as informações já existente.
                 escritor = new FileWriter("financiamentos.txt", true);
                 escritor.write(apartamento3.toString());
-                // Finaliza o escritor
+                // Finaliza o escritor 
                 escritor.flush();
                 escritor.close();
             // Captura de erro de arquivos não encontrado.
             } catch (FileNotFoundException e) {
-                // Informa o erro ao usuário.
+                //Informa o erro ao usuário.
                 System.out.println("Arquivo não encontrado! Reinicando o programa.");
             // Captura de erro IO.
             } catch (IOException e) {
@@ -221,7 +232,7 @@ public class Main {
             }
 
             System.out.println("\n=========Financiamentos:=========\n");
-            // Salvamento e leitura da listaDeFinanciamento, Serializado.
+
             // Serialização das informações da lista de Financiamento
             escreverDadosSerializados();
             // Leitura da listaDeFinanciamento serializado.
@@ -243,7 +254,9 @@ public class Main {
             Financiamento terreno2 = new Terreno(valorImovel, prazoFinanciamento, taxaJurosAnual, tipoZoneamento);
             // Instância o escritor.
             try {
-                // Define o escritor com arquivo "financiamentos.txt", e não permite que ele sobrescreva as informações já existente.
+                /** Define o escritor com arquivo "financiamentos.txt",
+                 *  e não permite que ele sobrescreva as informações já existente.
+                 */
                 escritor = new FileWriter("financiamentos.txt", true);
                 escritor.write(terreno2.toString());
                 // Finaliza o escritor
@@ -259,12 +272,11 @@ public class Main {
             }
 
             System.out.println("\n=========Financiamentos:=========\n");
-            // Salvamento e leitura da listaDeFinanciamento, Serializado.
             // Serialização das informações da lista de Financiamento
             escreverDadosSerializados();
             // Leitura da listaDeFinanciamento serializado.
             lerDadosSerializados();
-            // Imprime o valor total dos imovéis e financiamento.
+            //  Imprime o valor total dos imovéis e financiamento.
             Financiamento.imprimirValores();
         }
     }
