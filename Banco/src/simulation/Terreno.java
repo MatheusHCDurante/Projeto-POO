@@ -1,6 +1,6 @@
 package simulation;
 public class Terreno extends Financiamento {
-    /** Tipo de zoneamento */
+    /** Tipo de zoneamento. */
     private String tipoDeZona;
 
     /**
@@ -10,18 +10,19 @@ public class Terreno extends Financiamento {
      * @param valorImovel Retorna valor do imóvel.
      * @param prazoFinanciamento Retorna prazo de financiamento.
      * @param taxaJurosAnual Retorna porcentagem de juros anual.
+     * @param tipoDeZona Retorna tipo de zoneamento.
      */
     public Terreno(
         final double valorImovel,
         final int prazoFinanciamento,
         final double taxaJurosAnual,
-        String tipoDeZona) {
+        final String tipoDeZona) {
             super(valorImovel, prazoFinanciamento, taxaJurosAnual);
             this.tipoDeZona = tipoDeZona;
         }
 
     /**
-     * Permite que outras partes do código visualize o tipo de terreno. 
+     * Permite que outras partes do código visualize o tipo de terreno.
      *
      * @return Retorna tipo de zoneamento do terreno.
      */
@@ -32,7 +33,7 @@ public class Terreno extends Financiamento {
     /**
      * Calcula o valor do pagamento mensal de acordo com a classe.
      * Nesse caso casa, metodo de calculo único da classe.
-     * 
+     *
      * @return Retorna valor de pagamento mensal.
      */
     public double calcularPagamentoMensal() {

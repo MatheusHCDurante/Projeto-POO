@@ -11,7 +11,7 @@ public class Casa extends Financiamento {
     /**
      * Adiciona ao contrutor os atributos da classe Financiamento.
      * Junto aos atributos únicos da classe Casa.
-     * 
+     *
      * @param valorImovel Valor do imóvel.
      * @param prazoFinanciamento Prazo do financiamento.
      * @param taxaJurosAnual Porcentagem de juros anual.
@@ -22,10 +22,10 @@ public class Casa extends Financiamento {
         final double valorImovel,
         final int prazoFinanciamento,
         final double taxaJurosAnual,
-        final double tamanhoAreaConstruida,
+        final double tamanhoDaAreaConstruida,
         final double tamanhoTerreno) {
             super(valorImovel, prazoFinanciamento, taxaJurosAnual);
-            this.tamanhoAreaConstruida = tamanhoAreaConstruida;
+            this.tamanhoAreaConstruida = tamanhoDaAreaConstruida;
             this.tamanhoDoTerreno = tamanhoTerreno;
         }
 

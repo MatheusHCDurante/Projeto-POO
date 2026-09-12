@@ -9,6 +9,12 @@ public class Apartamento extends Financiamento {
     /**
      * Adiciona ao contrutor os atributos da classe Financiamento.
      * Junto aos atributos únicos da classe Apartamento.
+     *
+     * @param valorDoImovel Valor do imóvel.
+     * @param prazoDoFinanciamento Prazo de financiamento.
+     * @param taxaDeJurosAnual Porcentagem de juros anual.
+     * @param numeroDeVagas Número de vagas na garagem.
+     * @param andar Andar do apartamento.
      */
     public Apartamento(
         final double valorDoImovel,
@@ -91,7 +97,11 @@ public class Apartamento extends Financiamento {
          calcularPagamentoMensal(), calcularTotalPagamento());
     }
 
-    /** Converte os atributos de Apartamento para string. */
+    /**
+     * Converte os atributos de Apartamento para string.
+     *
+     * @return Retorna mensagem com informações do financiamento.
+     */
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Financiamento de Apartamento\n");
