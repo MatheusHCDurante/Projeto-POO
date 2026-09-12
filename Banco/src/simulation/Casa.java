@@ -8,9 +8,9 @@ public class Casa extends Financiamento {
     /** Tamanho do terreno. */
     private double tamanhoDoTerreno;
     /** Quantidade meses por ano. */
-    private static final int mesesPorAno = 12;
+    private static final int MESES_POR_ANO = 12;
     /** Valor de acrecimo no valor do financiamento. */
-    private static final double acrescimoTerreno = 80;
+    private static final double ACRESCIMO_CASA = 80;
 
     /**
      * Adiciona ao contrutor os atributos da classe Financiamento.
@@ -52,15 +52,10 @@ public class Casa extends Financiamento {
     }
 
     private void conferirValorAcrescimo(
-        double valorDeJuros,
-        double valorAcrescimo)
+        final double valorDeJuros,
+        final double valorAcrescimo)
         throws AumentoMaiorDoQueJurosException {
 
-        valorDeJuros = (this.getValorImovel()
-            / (this.getPrazoFinanciamento() * mesesPorAno))
-            * (1 + (this.getTaxaJurosAnual() / mesesPorAno))
-            - (this.getValorImovel() / (this.getPrazoFinanciamento() * mesesPorAno));
-        valorAcrescimo = acrescimoTerreno;
         if (valorDeJuros < valorAcrescimo) {
             throw new AumentoMaiorDoQueJurosException(
                 "O valor do acrescimo é maior que o juros,"
@@ -75,11 +70,11 @@ public class Casa extends Financiamento {
      */
     public double calcularPagamentoMensal() {
         double valorDeJuros = (this.getValorImovel()
-            / (this.getPrazoFinanciamento() * mesesPorAno))
-            * (1 + (this.getTaxaJurosAnual() / mesesPorAno)) - (this.getValorImovel()
-            / (this.getPrazoFinanciamento() * mesesPorAno));
+            / (this.getPrazoFinanciamento() * MESES_POR_ANO))
+            * (1 + (this.getTaxaJurosAnual() / MESES_POR_ANO)) - (this.getValorImovel()
+            / (this.getPrazoFinanciamento() * MESES_POR_ANO));
 
-        double valorAcrescimo = acrescimoTerreno;
+        double valorAcrescimo = ACRESCIMO_CASA;
         if (valorAcrescimo > valorDeJuros) {
             valorAcrescimo = valorDeJuros;
         }
@@ -87,8 +82,8 @@ public class Casa extends Financiamento {
         conferirValorAcrescimo(valorDeJuros, valorAcrescimo);
         } catch (AumentoMaiorDoQueJurosException e) {
         }
-        return (this.getValorImovel() / (this.getPrazoFinanciamento() * 12))
-        * (1 + (this.getTaxaJurosAnual() / 12)) + valorAcrescimo;
+        return (this.getValorImovel() / (this.getPrazoFinanciamento() * MESES_POR_ANO))
+        * (1 + (this.getTaxaJurosAnual() / MESES_POR_ANO)) + valorAcrescimo;
     }
 
     /**

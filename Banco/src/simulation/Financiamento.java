@@ -11,11 +11,11 @@ public abstract class Financiamento implements Serializable {
     /** porcentagem de juros anual. */
     private double taxaJurosAnual;
     /** valor inicial total de todos os imóveis simulados. */
-    private static double valorTotalImoveis;
+    private static double VALOR_TOTAL_IMOVEIS;
     /** Valor total dos financiamentos simulados. */
-    private static double valorTotalFinanciamentos;
-    /** Quantidade de meses em um ano para calculo */
-    private static final int mesesPorAno = 12;
+    private static double VALOR_TOTAL_FINANCIAMENTOS;
+    /** Quantidade de meses em um ano para calculo. */
+    private static final int MESES_POR_ANO = 12;
     /** Construtor.
      *
      * @param valorDoImovel Valor inicial do imovel.
@@ -76,7 +76,7 @@ public abstract class Financiamento implements Serializable {
      */
     public double calcularTotalPagamento() {
         return this.calcularPagamentoMensal()
-        * (this.prazoFinanciamentoEmAnos * mesesPorAno);
+        * (this.prazoFinanciamentoEmAnos * MESES_POR_ANO);
     }
 
     /**
@@ -86,11 +86,11 @@ public abstract class Financiamento implements Serializable {
      * @return Soma dos valor inicial dos imovéis.
      */
     public static double calcularValorTotalImoveis() {
-            valorTotalImoveis = 0;
+        VALOR_TOTAL_IMOVEIS = 0;
     for (Financiamento financiamento: listaDeFinanciamento) {
-        valorTotalImoveis += financiamento.valorImovel;
+        VALOR_TOTAL_IMOVEIS += financiamento.valorImovel;
     }
-    return valorTotalImoveis;
+    return VALOR_TOTAL_IMOVEIS;
     }
 
     /**
@@ -100,11 +100,11 @@ public abstract class Financiamento implements Serializable {
      * @return soma do valor final dos financiamentos.
      */
     public static double calcularValorTotalFinanciamentos() {
-        valorTotalFinanciamentos = 0;
+        VALOR_TOTAL_FINANCIAMENTOS = 0;
         for (Financiamento financiamento : listaDeFinanciamento) {
-        valorTotalFinanciamentos += financiamento.calcularTotalPagamento();
+            VALOR_TOTAL_FINANCIAMENTOS += financiamento.calcularTotalPagamento();
         }
-        return valorTotalFinanciamentos;
+        return VALOR_TOTAL_FINANCIAMENTOS;
     }
 
     // Método imprimir.

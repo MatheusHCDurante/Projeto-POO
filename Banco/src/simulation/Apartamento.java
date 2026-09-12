@@ -6,7 +6,7 @@ public class Apartamento extends Financiamento {
     /** Andar do apartamento. */
     private int numeroDoAndar;
     /** Quantidade meses por ano. */
-    private static final int mesesPorAno = 12;
+    private static final int MESES_POR_ANO = 12;
 
     /**
      * Adiciona ao contrutor os atributos da classe Financiamento.
@@ -59,7 +59,7 @@ public class Apartamento extends Financiamento {
      * @return Porcentagem de juros mensal.
      */
     public double taxaDeJurosMensal() {
-        return getTaxaJurosAnual() / mesesPorAno;
+        return getTaxaJurosAnual() / MESES_POR_ANO;
     }
 
     /**
@@ -68,7 +68,7 @@ public class Apartamento extends Financiamento {
      * @return Retorna quantidade de meses de financiamento.
      */
     public double prazoMensal() {
-        return getPrazoFinanciamento() * mesesPorAno;
+        return getPrazoFinanciamento() * MESES_POR_ANO;
     }
 
     /**

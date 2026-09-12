@@ -3,9 +3,9 @@ public class Terreno extends Financiamento {
     /** Tipo de zoneamento. */
     private String tipoDeZona;
     /** Quantidade meses por ano. */
-    private static final int mesesPorAno = 12;
+    private static final int MESES_POR_ANO = 12;
     /** Valor de acrecimo no valor do financiamento. */
-    private static final double acrescimoTerreno = 1.02;
+    private static final double ACRESCIMO_TERRENO = 1.02;
 
     /**
      * Adiciona ao contrutor os atributos da classe Financiamento.
@@ -41,8 +41,8 @@ public class Terreno extends Financiamento {
      * @return Retorna valor de pagamento mensal.
      */
     public double calcularPagamentoMensal() {
-        return (getValorImovel() / (getPrazoFinanciamento() * mesesPorAno))
-        * (1 + (this.getTaxaJurosAnual() / mesesPorAno)) * acrescimoTerreno;
+        return (getValorImovel() / (getPrazoFinanciamento() * MESES_POR_ANO))
+        * (1 + (this.getTaxaJurosAnual() / MESES_POR_ANO)) * ACRESCIMO_TERRENO;
     }
 
     /**
