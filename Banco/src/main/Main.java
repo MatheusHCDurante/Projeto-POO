@@ -24,13 +24,13 @@ import util.InterfaceTerreno;
 
 public class Main {
     /** 
-     * Definindo lista que guardara os financiamentos
+     * Definindo lista que guardara os financiamentos.
      */
     public static List<Financiamento> listaDeFinanciamento =
         new ArrayList<Financiamento>();
     /** 
-     * Método para fazer a leitura dos dados salvo no arquivo
-     * "financiamentos.txt"
+     * Método para fazer a leitura dos dados salvo no arquivo.
+     * "financiamentos.txt".
      */
     public static void lerFinanciamentosSalvos() {
         FileReader leitor = null;
@@ -51,15 +51,15 @@ public class Main {
     }
 
     /**
-     * Método para escrever a listaDeFinanciamento
-     * no arquivo serializado Financiamento2.txt
+     * Método para escrever a listaDeFinanciamento.
+     * No arquivo serializado Financiamento2.txt.
      */
     public static void escreverDadosSerializados() {
         ObjectOutputStream escritor2 = null;
         try {
             /* 
-            Cria uma nova entrada de objeto em um novo arquivo
-            "Financiamento2.txt", chamado escritor2
+            Cria uma nova entrada de objeto em um novo arquivo.
+            "Financiamento2.txt", chamado escritor2.
             */
             escritor2 = new ObjectOutputStream(
                 new FileOutputStream("Financiamento2.txt"));
@@ -78,15 +78,15 @@ public class Main {
             e.printStackTrace();
         }
     }
-    /*
-     * Método para realizar a leitura dos dados
-     * serializados no arquivo Financiamento2.txt
-     */
+    /**
+      * Método para realizar a leitura dos dados.
+      * Serializados no arquivo Financiamento2.txt.
+      */
     public static void lerDadosSerializados() {
         ObjectInputStream leitor2 = null;
         try {
-            // Cria uma nova saida de objeto no arquivo
-            // "Financiamento2.txt", chamado leitor2
+            // Cria uma nova saida de objeto no arquivo.
+            // "Financiamento2.txt", chamado leitor2.
             leitor2 = new ObjectInputStream(
                 new FileInputStream("Financiamento2.txt"));
             while (true) {
@@ -122,7 +122,7 @@ public class Main {
         listaDeFinanciamento.add(new Terreno(1000000, 2, 10, "Residêncial"));
     }
 
-    // Início do main
+    // Início do main.
     public static void main(String[] args) {
         InterfaceCasa interfaceCasa = new InterfaceCasa();
         InterfaceApartamento interfaceApartamento = new InterfaceApartamento();
@@ -142,14 +142,14 @@ public class Main {
             escritor.write(apartamento.toString());
             escritor.write(apartamento2.toString());
             escritor.write(terreno.toString());
-            // Finaliza o escritor
+            // Finaliza o escritor.
             escritor.flush();
             escritor.close();
         // Captura de erro de arquivos não encontrado.
         } catch (FileNotFoundException e) {
             // Informa o erro ao usuário.
             System.out.println("Arquivo não encontrado! Reinicando.");
-        // Captura de erro IO. 
+        // Captura de erro IO.
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -157,19 +157,20 @@ public class Main {
         carregarFinanciamentosIniciais();
 
         if (opcaoFinanciamento == 1) {
-            // Atributos bases de Financiamento + atributos únicos de Casa. 
+            // Atributos bases de Financiamento + atributos únicos de Casa.
             double valorImovel = interfaceCasa.obterValorImovel();
             int prazoFinanciamento = interfaceCasa.obterPrazoFinanciamento();
             double taxaJurosAnual = interfaceCasa.obterTaxaJuros();
-            double tamanhoAreaConstruida = interfaceCasa.obterTamanhoAreaConstruida();
+            double tamanhoAreaConstruida = 
+            interfaceCasa.obterTamanhoAreaConstruida();
             double tamanhoDoTerreno = interfaceCasa.obterTamanhoDoTerreno();
             // Adiciona uma nova casa na listaDeFinanciamento. 
             interfaceCasa.adicionarALista(
                 valorImovel, prazoFinanciamento, taxaJurosAnual,
                 tamanhoAreaConstruida, tamanhoDoTerreno);
 
-            // Salvamento  e leitura de dados 
-            // Instância nova casa, atraves das
+            // Salvamento  e leitura de dados.
+            // Instância nova casa, atraves das.
             // informações obtidas do úsuario.
             Financiamento casa3 = new Casa(
                 valorImovel, prazoFinanciamento, taxaJurosAnual,
@@ -177,25 +178,25 @@ public class Main {
             // Instância o escrito e define como nulo.
             try {
                 /*
-                Define o escritor com arquivo "financiamentos.txt",
-                e não permite que ele sobrescreva as informações já existente.
-                */
+                 * Define o escritor com arquivo "financiamentos.txt".
+                 * Não permite que ele sobrescreva as informações já existente.
+                 */
                 escritor = new FileWriter("financiamentos.txt", true);
                 escritor.write(casa3.toString());
-                //Finaliza o escritor
+                //Finaliza o escritor.
                 escritor.flush();
                 escritor.close();
             // Captura de erro de arquivos não encontrado.
             } catch (FileNotFoundException e) {
-                // Informa o erro ao usuário. 
+                // Informa o erro ao usuário.
                 System.out.println("Arquivo não encontrado! Reinicando.");
-            // Captura de erro IO. 
+            // Captura de erro IO.
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
             System.out.println("\n=========Financiamentos:=========\n");
-            // Serialização das informações da lista de Financiamento
+            // Serialização das informações da lista de Financiamento.
             escreverDadosSerializados();
             // Leitura da listaDeFinanciamento serializado.
             lerDadosSerializados();
@@ -205,11 +206,14 @@ public class Main {
 
         // Se o úsuario escolhe a opção 3 inicia o código do Apartamento.
         } else if (opcaoFinanciamento == 2) {
-            // Atributos bases de Financiamento + atributos únicos de Apartamento.
+            // Atributos bases de Financiamento +
+            // Atributos únicos de Apartamento.
             double valorImovel = interfaceApartamento.obterValorImovel();
-            int prazoFinanciamento = interfaceApartamento.obterPrazoFinanciamento();
+            int prazoFinanciamento =
+            interfaceApartamento.obterPrazoFinanciamento();
             double taxaJurosAnual = interfaceApartamento.obterTaxaJuros();
-            int numeroDeVagasGaragem = interfaceApartamento.obterNumeroDeVagasGaragem();
+            int numeroDeVagasGaragem = 
+            interfaceApartamento.obterNumeroDeVagasGaragem();
             int numeroDoAndar = interfaceApartamento.obterNumeroDoAndar();
             // Adiciona um novo apartamento na listaDeFinanciamento.
             interfaceApartamento.adicionarALista(
@@ -217,17 +221,18 @@ public class Main {
                 numeroDeVagasGaragem, numeroDoAndar);
 
             
-            // Instância um novo apartamento, atraves das informações dadas pelo úsuario.
+            // Instância um novo apartamento.
+            // Atraves das informações dadas pelo úsuario.
             Financiamento apartamento3 = new Apartamento(
                 valorImovel, prazoFinanciamento, taxaJurosAnual,
                 numeroDeVagasGaragem, numeroDoAndar);
             // Instância o escrito e define como nulo.
             try {
-                // Define o escritor com arquivo "financiamentos.txt", e 
-                // não permite que ele sobrescreva as informações já existente.
+                // Define o escritor com arquivo "financiamentos.txt".
+                // Não permite que ele sobrescreva as informações já existente.
                 escritor = new FileWriter("financiamentos.txt", true);
                 escritor.write(apartamento3.toString());
-                // Finaliza o escritor 
+                // Finaliza o escritor.
                 escritor.flush();
                 escritor.close();
             // Captura de erro de arquivos não encontrado.
@@ -241,7 +246,7 @@ public class Main {
 
             System.out.println("\n=========Financiamentos:=========\n");
 
-            // Serialização das informações da lista de Financiamento
+            // Serialização das informações da lista de Financiamento.
             escreverDadosSerializados();
             // Leitura da listaDeFinanciamento serializado.
             lerDadosSerializados();
@@ -267,12 +272,12 @@ public class Main {
             // Instância o escritor.
             try {
                 /* 
-                Define o escritor com arquivo "financiamentos.txt",
-                e não permite que ele sobrescreva as informações já existente.
-                */
+                 * Define o escritor com arquivo "financiamentos.txt".
+                 * e não permite que ele sobrescreva as informações já existente.
+                 */
                 escritor = new FileWriter("financiamentos.txt", true);
                 escritor.write(terreno2.toString());
-                // Finaliza o escritor
+                // Finaliza o escritor.
                 escritor.flush();
                 escritor.close();
             // Captura de erro de arquivos não encontrado.
@@ -285,7 +290,7 @@ public class Main {
             }
 
             System.out.println("\n=========Financiamentos:=========\n");
-            // Serialização das informações da lista de Financiamento
+            // Serialização das informações da lista de Financiamento.
             escreverDadosSerializados();
             // Leitura da listaDeFinanciamento serializado.
             lerDadosSerializados();
