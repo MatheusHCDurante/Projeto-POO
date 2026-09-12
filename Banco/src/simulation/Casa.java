@@ -6,37 +6,47 @@ public class Casa extends Financiamento {
     private double tamanhoAreaConstruida;
     private double tamanhoDoTerreno;
 
-    // Adiciona ao contrutor os atributos da classe Financiamento.
-    //  junto aos atributos únicos da classe Casa. 
+    /**
+     * Adiciona ao contrutor os atributos da classe Financiamento.
+     * Junto aos atributos únicos da classe Casa.
+     */
     public Casa(
-        double valorImovel,
-        int prazoFinanciamento,
-        double taxaJurosAnual,
-        double tamanhoAreaConstruida,
-        double tamanhoDoTerreno) {
+        final double valorImovel,
+        final int prazoFinanciamento,
+        final double taxaJurosAnual,
+        final double tamanhoAreaConstruida,
+        final double tamanhoTerreno) {
             super(valorImovel, prazoFinanciamento, taxaJurosAnual);
             this.tamanhoAreaConstruida = tamanhoAreaConstruida;
-            this.tamanhoDoTerreno = tamanhoDoTerreno;
+            this.tamanhoDoTerreno = tamanhoTerreno;
         }
 
-    /** Permite que outras partes do código visualize. */
+    /**
+     * Permite que outras partes do código visualize.
+     *
+     * @return Retorna o tamanho do terreno indicado pelo usuário. 
+     */
     public double getAreaConstruida() {
         return tamanhoAreaConstruida;
     }
 
-    /** Permite que outras partes do código visualize o TamanhoTerreno. */
+    /**
+     * Permite que outras partes do código visualize o TamanhoTerreno.
+     *
+     * @return Retorna o tamanho do terreno indicado pelo usuário. 
+     */
     public double getTamanhoTerreno() {
         return tamanhoDoTerreno;
     }
 
     private void conferirValorAcrescimo(
         double valorDeJuros,
-        double valorAcrescimo) 
+        double valorAcrescimo)
         throws AumentoMaiorDoQueJurosException {
 
         valorDeJuros = (this.getValorImovel()
             / (this.getPrazoFinanciamento() * 12))
-            * (1 + (this.getTaxaJurosAnual() / 12)) 
+            * (1 + (this.getTaxaJurosAnual() / 12))
             - (this.getValorImovel() / (this.getPrazoFinanciamento() * 12));
         valorAcrescimo = 80;
         if (valorDeJuros < valorAcrescimo) {
@@ -48,11 +58,13 @@ public class Casa extends Financiamento {
     /**
      * Calcula o valor do pagamento mensal de acordo com a classe.
      * Messe caso casa, metodo de calculo único da classe.
+     * 
+     * @return Calculo de pagamento mensal.
      */
     public double calcularPagamentoMensal() {
         double valorDeJuros = (this.getValorImovel()
             / (this.getPrazoFinanciamento() * 12))
-            *(1 + (this.getTaxaJurosAnual() / 12)) - (this.getValorImovel()
+            * (1 + (this.getTaxaJurosAnual() / 12)) - (this.getValorImovel()
             / (this.getPrazoFinanciamento() * 12));
 
         double valorAcrescimo = 80;
@@ -64,8 +76,8 @@ public class Casa extends Financiamento {
         conferirValorAcrescimo(valorDeJuros, valorAcrescimo);
         } catch (AumentoMaiorDoQueJurosException e) {
         }
-        return (this.getValorImovel() / (this.getPrazoFinanciamento() * 12)) 
-        * (1 +(this.getTaxaJurosAnual() / 12)) + valorAcrescimo;
+        return (this.getValorImovel() / (this.getPrazoFinanciamento() * 12))
+        * (1 + (this.getTaxaJurosAnual() / 12)) + valorAcrescimo;
     }
 
     /**
@@ -86,7 +98,11 @@ public class Casa extends Financiamento {
         calcularPagamentoMensal(), calcularTotalPagamento());
     }
 
-    /** Converte os atributos de Casa para string */
+    /**
+     * Converte os atributos de Casa para string.
+     * 
+     * @return Mensagem com informações do financiamento.
+     */
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Financiamento de Casa\n");
@@ -106,5 +122,4 @@ public class Casa extends Financiamento {
             .append(calcularTotalPagamento()).append("\n\n");
         return sb.toString();
     }
-    
 }

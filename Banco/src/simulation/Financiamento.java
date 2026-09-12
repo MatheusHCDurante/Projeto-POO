@@ -15,14 +15,19 @@ public abstract class Financiamento implements Serializable {
     /** Valor total dos financiamentos simulados. */
     private static double valorTotalFinanciamentos;
 
-    /** Construtor */
+    /** Construtor.
+     *
+     * @param valorDoImovel Valor inicial do imovel.
+     * @param prazoFinanciamento Prazo de financiamento em mês.
+     * @param taxaDeJurosAnual Porcentagem de juros anual.
+     */
     public Financiamento(
         final double valorDoImovel,
         final int prazoFinanciamento,
-        final double taxaJurosAnual) {
+        final double taxaDeJurosAnual) {
         this.valorImovel = valorDoImovel;
         this.prazoFinanciamentoEmAnos = prazoFinanciamento;
-        this.taxaJurosAnual = taxaJurosAnual;
+        this.taxaJurosAnual = taxaDeJurosAnual;
     }
 
     /**
@@ -58,6 +63,8 @@ public abstract class Financiamento implements Serializable {
      * métodos calculo.
      * Calcula o valor do pagamento mensal. Abstract, o cálculo muda de acordo.
      * com classe(financiamento da classe x tem formas próprias de calculo).
+     *
+     * @return Valor de pagamento mensal.
      */
     public abstract double calcularPagamentoMensal();
 
@@ -67,7 +74,7 @@ public abstract class Financiamento implements Serializable {
      * @return Multiplicação do pagamento mensal por 12 meses.
      */
     public double calcularTotalPagamento() {
-        return this.calcularPagamentoMensal() 
+        return this.calcularPagamentoMensal()
         * (this.prazoFinanciamentoEmAnos * 12);
     }
 
