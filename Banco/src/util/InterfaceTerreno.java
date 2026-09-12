@@ -151,9 +151,11 @@ public class InterfaceTerreno extends InterfaceUsuario {
         }
     }
 
-    /** 
+    /**
      * Método próprio da InterfaceTerreno para obter o atributo.
      * Próprio da classe Terreno, no caso o tipo de zoneamento do terreno.
+     *
+     * @return Retorna o tipo de zoneamento do terreno.
      */
     public String obterTipoDeZoneamento() {
         while (true) {
@@ -203,7 +205,13 @@ public class InterfaceTerreno extends InterfaceUsuario {
         }
     }
 
-    /** Adiciona um novo terreno à listaDeFinancimanto. */
+    /** Adiciona um novo terreno à listaDeFinancimanto. 
+     * @param valorImovel armazena o valor o imóvel.
+     * @param prazoFincanciamento armazena prazo de financiamento.
+     * @param taxaJurosAnual armazena juros anual em %.
+     * @param tipoZoneamento armazena o tipo de zoneamento.
+     * Zoneamento residencial, comercial ou industrial.
+     */
     public void adicionarALista(
         final double valorImovel,
         final int prazoFincanciamento,
