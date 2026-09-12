@@ -46,7 +46,7 @@ public class InterfaceTerreno extends InterfaceUsuario {
     // Para obter o valor do terreno.
     @Override
     public double obterValorImovel() {
-        while (true) { 
+        while (true) {
             // Valor base do valor do imóvel.
             double valorImovel = 0.0;
             try {
@@ -84,7 +84,7 @@ public class InterfaceTerreno extends InterfaceUsuario {
     // Sobrescrito para obter o prazo de financiamento.
     @Override
     public int obterPrazoFinanciamento() {
-        while (true) { 
+        while (true) {
             // Valor base do prazo de financiamento.
             int prazoFinanciamento = 0;
             try {
@@ -119,7 +119,7 @@ public class InterfaceTerreno extends InterfaceUsuario {
     // Sobrescrito para obter a taxa de juros.
     @Override
     public double obterTaxaJuros() {
-        while (true) { 
+        while (true) {
             // Valor base da taxa de juros.
             double taxaJurosAnual = 0;
             try {
@@ -129,7 +129,7 @@ public class InterfaceTerreno extends InterfaceUsuario {
                 taxaJurosAnual += getScanner().nextDouble();
                 // Informa ao usuário o juros anual informado por ele.
                 System.out.println(
-                    "A taxa de juros anual é: " + taxaJurosAnual +"%\n");
+                    "A taxa de juros anual é: " + taxaJurosAnual + "%\n");
                 // Limita e confere o juros imposto no financiamento.
                 // (O limitador pode ser alterado.)
                 conferirValoresNaoPermitidosDouble(taxaJurosAnual);
@@ -139,11 +139,11 @@ public class InterfaceTerreno extends InterfaceUsuario {
                 System.out.println("Porfavor use apenas númerais");
                 getScanner().next();
                 continue;
-            // Captura o erro da entrada de valores acima ou abaixo do permitido.
+            // Captura o erro de valores acima ou abaixo do permitido.
             } catch (ValoresAcimaOuAbaixoDoPermitidoException e) {
                 // Caso ocorra o erro, informa ao usuário.
                 System.out.println(
-                    "O valor informado está fora do permitido." 
+                    "O valor informado está fora do permitido."
                     + "O mínimo de juros possível 0.1% e o maximo é 30.0%");
                 continue;
             }
@@ -151,8 +151,10 @@ public class InterfaceTerreno extends InterfaceUsuario {
         }
     }
 
-    // Método próprio da InterfaceTerreno para obter o atributo.
-    // Próprio da classe Terreno, no caso o tipo de zoneamento do terreno.
+    /** 
+     * Método próprio da InterfaceTerreno para obter o atributo.
+     * Próprio da classe Terreno, no caso o tipo de zoneamento do terreno.
+     */
     public String obterTipoDeZoneamento() {
         while (true) {
             int tipoZoneamento = 0;
@@ -162,7 +164,7 @@ public class InterfaceTerreno extends InterfaceUsuario {
                 // Pode ser adicionado mais, caso seja nescesario.
                 // NESSE CASO SE ATENTAR EM MUDAR O CÓDIGO.
                 System.out.println(
-                    "Escolha o tipo de zoneamento:" 
+                    "Escolha o tipo de zoneamento:"
                     + "\n(1) Residêncial.\n(2) Comercial.\n(3) Industrial.");
                 tipoZoneamento += getScanner().nextInt();
 
@@ -189,7 +191,7 @@ public class InterfaceTerreno extends InterfaceUsuario {
                     );
 
                     continue;
-                }  
+                }
             // Captura o erro entrada de dado errada.
             // Nesse caso qualquer caractere que não seja um número inteiro.
             } catch (InputMismatchException e) {
@@ -201,9 +203,12 @@ public class InterfaceTerreno extends InterfaceUsuario {
         }
     }
 
-    // Adiciona um novo terreno à listaDeFinancimanto.
-    public void adicionarALista(double valorImovel, int prazoFincanciamento,
-        double taxaJurosAnual, String tipoZoneamento) {
+    /** Adiciona um novo terreno à listaDeFinancimanto. */
+    public void adicionarALista(
+        final double valorImovel,
+        final int prazoFincanciamento,
+        final double taxaJurosAnual,
+        final String tipoZoneamento) {
         listaDeFinanciamento.add(new Terreno(valorImovel, prazoFincanciamento,
         taxaJurosAnual, tipoZoneamento));
     }

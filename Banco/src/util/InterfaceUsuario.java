@@ -10,7 +10,7 @@ public abstract class InterfaceUsuario {
     /**
      * Método para conferir se ha valores negativos ou zerado.
      * Para números inteiros.
-     * 
+     *
      * @param tipoFinanciamento tipo de financiamento informado pelo usuário.
      */
     public static void conferirValoresNegativosOuZero(
