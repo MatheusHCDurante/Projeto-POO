@@ -5,22 +5,22 @@ public abstract class Financiamento implements Serializable {
 
     // Atributos (define os atributos da classe abstrata Financiamento).
     /** Valor do Imovel usado no financiamento. */
-    protected  double valorImovel;
+    private double valorImovel;
     /** Tempo de duração financiamento em anos. */
-    protected int prazoFinanciamentoEmAnos;
+    private int prazoFinanciamentoEmAnos;
     /** porcentagem de juros anual. */
-    protected double taxaJurosAnual;
+    private double taxaJurosAnual;
     /** valor inicial total de todos os imóveis simulados. */
-    protected static double valorTotalImoveis;
+    private static double valorTotalImoveis;
     /** Valor total dos financiamentos simulados. */
     private static double valorTotalFinanciamentos;
 
-    // Construtor
+    /** Construtor */
     public Financiamento(
-        double valorImovel,
-        int prazoFinanciamento,
-        double taxaJurosAnual) {
-        this.valorImovel = valorImovel;
+        final double valorDoImovel,
+        final int prazoFinanciamento,
+        final double taxaJurosAnual) {
+        this.valorImovel = valorDoImovel;
         this.prazoFinanciamentoEmAnos = prazoFinanciamento;
         this.taxaJurosAnual = taxaJurosAnual;
     }
@@ -67,8 +67,8 @@ public abstract class Financiamento implements Serializable {
      * @return Multiplicação do pagamento mensal por 12 meses.
      */
     public double calcularTotalPagamento() {
-        return this.calcularPagamentoMensal() *
-        (this.prazoFinanciamentoEmAnos * 12);
+        return this.calcularPagamentoMensal() 
+        * (this.prazoFinanciamentoEmAnos * 12);
     }
 
     /**
@@ -77,7 +77,7 @@ public abstract class Financiamento implements Serializable {
      *
      * @return Soma dos valor inicial dos imovéis.
      */
-    static public double calcularValorTotalImoveis() {
+    public static double calcularValorTotalImoveis() {
             valorTotalImoveis = 0;
     for (Financiamento financiamento: listaDeFinanciamento) {
         valorTotalImoveis += financiamento.valorImovel;
@@ -91,7 +91,7 @@ public abstract class Financiamento implements Serializable {
      *
      * @return soma do valor final dos financiamentos.
      */
-    static public double calcularValorTotalFinanciamentos() {
+    public static double calcularValorTotalFinanciamentos() {
         valorTotalFinanciamentos = 0;
         for (Financiamento financiamento : listaDeFinanciamento) {
         valorTotalFinanciamentos += financiamento.calcularTotalPagamento();
@@ -112,7 +112,7 @@ public abstract class Financiamento implements Serializable {
      * Imprime o valor total de todos os imovéis.
      * E o valor total de todos os financiamentos.
      */
-    static public void imprimirValores() {
+    public static void imprimirValores() {
         System.out.println("\n----------Valor Total Imovéis----------");
         System.out.printf("Valor total dos imovéis é: R$%.2f\n",
         calcularValorTotalImoveis());

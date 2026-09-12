@@ -28,7 +28,8 @@ public class Main {
      */
     public static List<Financiamento> listaDeFinanciamento =
         new ArrayList<Financiamento>();
-    /** 
+
+    /**
      * Método para fazer a leitura dos dados salvo no arquivo.
      * "financiamentos.txt".
      */
@@ -37,8 +38,10 @@ public class Main {
         try {
             leitor = new FileReader("financiamentos.txt");
             int c;
-            while ((c = leitor.read()) != -1)
+            while ((c = leitor.read()) != -1) {
                 System.out.print((char) c);
+            }
+
             leitor.close();
         // Captura de erro de arquivos não encontrado.
         } catch (FileNotFoundException e) {
@@ -57,7 +60,7 @@ public class Main {
     public static void escreverDadosSerializados() {
         ObjectOutputStream escritor2 = null;
         try {
-            /* 
+            /*
             Cria uma nova entrada de objeto em um novo arquivo.
             "Financiamento2.txt", chamado escritor2.
             */
@@ -113,7 +116,9 @@ public class Main {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Método para carregar financiamento iniciais de exemplo.
+     */
     public static void carregarFinanciamentosIniciais() {
         listaDeFinanciamento.add(new Casa(2000, 1, 1.0, 81, 360));
         listaDeFinanciamento.add(new Casa(2500000, 10, 1.8, 200, 800));
@@ -122,17 +127,17 @@ public class Main {
         listaDeFinanciamento.add(new Terreno(1000000, 2, 10, "Residêncial"));
     }
 
-    // Início do main.
-    public static void main(String[] args) {
+    /** Início do main. */
+    public static void main(final String[] args) {
         InterfaceCasa interfaceCasa = new InterfaceCasa();
         InterfaceApartamento interfaceApartamento = new InterfaceApartamento();
         InterfaceTerreno interfaceTerreno = new InterfaceTerreno();
         int opcaoFinanciamento = interfaceCasa.obterTipoDeFinanciamento();
-        
+
         Financiamento casa = (new Casa(2000, 1, 1.0, 81, 360));
         Financiamento casa2 = (new Casa(2500000, 10, 1.8, 200, 800));
         Financiamento apartamento = (new Apartamento(300000, 20, 3.8, 1, 20));
-        Financiamento apartamento2 = (new Apartamento(154000,2, 0.8, 3, 75));
+        Financiamento apartamento2 = (new Apartamento(154000, 2, 0.8, 3, 75));
         Financiamento terreno = (new Terreno(1000000, 2, 10, "Residêncial"));
         FileWriter escritor = null;
         try {
@@ -161,10 +166,10 @@ public class Main {
             double valorImovel = interfaceCasa.obterValorImovel();
             int prazoFinanciamento = interfaceCasa.obterPrazoFinanciamento();
             double taxaJurosAnual = interfaceCasa.obterTaxaJuros();
-            double tamanhoAreaConstruida = 
+            double tamanhoAreaConstruida =
             interfaceCasa.obterTamanhoAreaConstruida();
             double tamanhoDoTerreno = interfaceCasa.obterTamanhoDoTerreno();
-            // Adiciona uma nova casa na listaDeFinanciamento. 
+            // Adiciona uma nova casa na listaDeFinanciamento.
             interfaceCasa.adicionarALista(
                 valorImovel, prazoFinanciamento, taxaJurosAnual,
                 tamanhoAreaConstruida, tamanhoDoTerreno);
@@ -212,7 +217,7 @@ public class Main {
             int prazoFinanciamento =
             interfaceApartamento.obterPrazoFinanciamento();
             double taxaJurosAnual = interfaceApartamento.obterTaxaJuros();
-            int numeroDeVagasGaragem = 
+            int numeroDeVagasGaragem =
             interfaceApartamento.obterNumeroDeVagasGaragem();
             int numeroDoAndar = interfaceApartamento.obterNumeroDoAndar();
             // Adiciona um novo apartamento na listaDeFinanciamento.
@@ -220,7 +225,6 @@ public class Main {
                 valorImovel, prazoFinanciamento, taxaJurosAnual,
                 numeroDeVagasGaragem, numeroDoAndar);
 
-            
             // Instância um novo apartamento.
             // Atraves das informações dadas pelo úsuario.
             Financiamento apartamento3 = new Apartamento(
@@ -265,15 +269,16 @@ public class Main {
                 valorImovel, prazoFinanciamento,
                 taxaJurosAnual, tipoZoneamento);
 
-            // Instância um novo terreno, atraves das informações dadas pelo úsuario.
+            // Instância um novo terreno.
+            // Atraves das informações dadas pelo úsuario.
             Financiamento terreno2 = new Terreno(
                 valorImovel, prazoFinanciamento,
                 taxaJurosAnual, tipoZoneamento);
             // Instância o escritor.
             try {
-                /* 
+                /*
                  * Define o escritor com arquivo "financiamentos.txt".
-                 * e não permite que ele sobrescreva as informações já existente.
+                 * Não permite que ele sobrescreva as informações já existente.
                  */
                 escritor = new FileWriter("financiamentos.txt", true);
                 escritor.write(terreno2.toString());

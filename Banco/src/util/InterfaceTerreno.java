@@ -205,7 +205,7 @@ public class InterfaceTerreno extends InterfaceUsuario {
         }
     }
 
-    /** Adiciona um novo terreno à listaDeFinancimanto. 
+    /** Adiciona um novo terreno à listaDeFinancimanto.
      * @param valorImovel armazena o valor o imóvel.
      * @param prazoFincanciamento armazena prazo de financiamento.
      * @param taxaJurosAnual armazena juros anual em %.
