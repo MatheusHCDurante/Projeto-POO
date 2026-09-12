@@ -1,7 +1,6 @@
 package util;
 
 import java.util.InputMismatchException;
-import java.util.Scanner;
 import static main.Main.listaDeFinanciamento;
 import simulation.Terreno;
 
@@ -55,7 +54,7 @@ public class InterfaceTerreno extends InterfaceUsuario {
                 // Eu substitui o valor atraves do scanner.
                 System.out.println(
                     "Digite o valor do terreno que deseja financiar: ");
-                valorImovel += scanner.nextDouble();
+                valorImovel += getScanner().nextDouble();
                 // Informa ao usuário o prazo informado por ele.
                 System.out.printf("O valor da casa é: R$%.2f\n", valorImovel);
                 // Confere se há erro relacionado a valores negativos ou zerado.
@@ -65,7 +64,7 @@ public class InterfaceTerreno extends InterfaceUsuario {
             // Nesse caso qualquer caractere que não seja um número inteiro.
             } catch (InputMismatchException e) {
                 System.out.println("Porfavor use apenas númerais");
-                scanner = new Scanner(System.in);
+                getScanner().next();
                 continue;
             // Captura o erro da entrada de valores negativos ou zerado.
             } catch (ValoresNegativosOuIgualZeroException e) {
@@ -92,7 +91,7 @@ public class InterfaceTerreno extends InterfaceUsuario {
                 // Solicita ao usuário o prazo de inanciamento.
                 // Eu substitui o valor atraves do scanner.
                 System.out.println("Digite o prazo de pagamento em anos: ");
-                prazoFinanciamento += scanner.nextInt();
+                prazoFinanciamento += getScanner().nextInt();
                 // Informa ao usuário o prazo informado por ele.
                 System.out.printf(
                     "O prazo de financiamento é: %d anos\n",
@@ -103,7 +102,7 @@ public class InterfaceTerreno extends InterfaceUsuario {
             // Nesse caso qualquer caractere que não seja um número inteiro.
             } catch (InputMismatchException e) {
                 System.out.println("Porfavor use apenas númerais");
-                scanner = new Scanner(System.in);
+                getScanner().next();
                 continue;
             // Captura o erro da entrada de valores negativos ou zerado.
             } catch (ValoresNegativosOuIgualZeroException e) {
@@ -127,7 +126,7 @@ public class InterfaceTerreno extends InterfaceUsuario {
                 // Solicita ao usuário a taxa de juros anual.
                 // Substitui o valor atraves do scanner.
                 System.out.println("Digite a taxa de juros anual: ");
-                taxaJurosAnual += scanner.nextDouble();
+                taxaJurosAnual += getScanner().nextDouble();
                 // Informa ao usuário o juros anual informado por ele.
                 System.out.println(
                     "A taxa de juros anual é: " + taxaJurosAnual +"%\n");
@@ -138,7 +137,7 @@ public class InterfaceTerreno extends InterfaceUsuario {
             // Nesse caso qualquer caractere que não seja um número inteiro.
             } catch (InputMismatchException e) {
                 System.out.println("Porfavor use apenas númerais");
-                scanner = new Scanner(System.in);
+                getScanner().next();
                 continue;
             // Captura o erro da entrada de valores acima ou abaixo do permitido.
             } catch (ValoresAcimaOuAbaixoDoPermitidoException e) {
@@ -165,7 +164,7 @@ public class InterfaceTerreno extends InterfaceUsuario {
                 System.out.println(
                     "Escolha o tipo de zoneamento:" 
                     + "\n(1) Residêncial.\n(2) Comercial.\n(3) Industrial.");
-                tipoZoneamento += scanner.nextInt();
+                tipoZoneamento += getScanner().nextInt();
 
                 // Na opção 1, informa a escolha para o úsario.
                 // Retorna a escolha para o sistema, no caso "Residêncial".
@@ -196,7 +195,7 @@ public class InterfaceTerreno extends InterfaceUsuario {
             } catch (InputMismatchException e) {
                 // Caso ocorra o erro, informa ao usuário.
                 System.out.println("Por favor use apenas númerais");
-                scanner = new Scanner(System.in);
+                getScanner().next();
                 continue;
             }
         }

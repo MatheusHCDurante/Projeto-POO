@@ -4,14 +4,16 @@ import java.util.Scanner;
 
 public abstract class InterfaceUsuario {
     /**
-      * Obter dados apartir do usuário
+      * Obter dados apartir do usuário.
       */
-    Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
     /**
      * Método para conferir se ha valores negativos ou zerado.
      * Para números inteiros.
+     * 
+     * @param tipoFinanciamento tipo de financiamento informado pelo usuário.
      */
-    static public void conferirValoresNegativosOuZero(
+    public static void conferirValoresNegativosOuZero(
         final int tipoFinanciamento)
         throws ValoresNegativosOuIgualZeroException {
         if (tipoFinanciamento <= 0) {
@@ -20,16 +22,24 @@ public abstract class InterfaceUsuario {
         }
     }
 
-    /** 
+    /**
+     * Obtém o Scanner utilizado para entrada de dados.
+     *
+     * @return Scanner utilizado pela interface.
+     */
+    public Scanner getScanner() {
+        return scanner;
+    }
+
+    /**
      * Solicita para o úsiario qual o tipo de financiamento ele quer fazer.
-     * 
+     *
      * @return Retirna o tipo de financiamento.
      */
     public int obterTipoDeFinanciamento() {
         while (true) {
             // Define o valor base para o tipo de Financiamento.
             int tipoFinanciamento = 0;
-            Scanner scanner = new Scanner(System.in);
             try {
                 // Oferece ao usário opções e solicita o tamanho do
                 // terreno e substitui o valor atraves do scanner.
