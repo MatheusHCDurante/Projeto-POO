@@ -11,15 +11,20 @@ public abstract class InterfaceUsuario {
      * Método para conferir se ha valores negativos ou zerado.
      * Para números inteiros.
      */
-    static public void conferirValoresNegativosOuZero(int tipoFinanciamento)
-    throws ValoresNegativosOuIgualZeroException {
+    static public void conferirValoresNegativosOuZero(
+        final int tipoFinanciamento)
+        throws ValoresNegativosOuIgualZeroException {
         if (tipoFinanciamento <= 0) {
             throw new ValoresNegativosOuIgualZeroException(
                 "O valor informado é zero ou negativo.");
         }
     }
 
-    /** Solicita para o úsiario qual o tipo de financiamento ele quer fazer */
+    /** 
+     * Solicita para o úsiario qual o tipo de financiamento ele quer fazer.
+     * 
+     * @return Retirna o tipo de financiamento.
+     */
     public int obterTipoDeFinanciamento() {
         while (true) {
             // Define o valor base para o tipo de Financiamento.
@@ -35,7 +40,7 @@ public abstract class InterfaceUsuario {
                 tipoFinanciamento += scanner.nextInt();
                 // Informa ao usuário o tipo de financiamento selecionado.
                 conferirValoresNegativosOuZero(tipoFinanciamento);
-            // Captura o erro entrada de dado errado,
+            // Captura o erro entrada de dado errado.
             // nesse caso qualquer caractere que não seja um número inteiro.
             } catch (InputMismatchException e) {
                 // Caso ocorra o erro, informa ao usuário.
@@ -52,12 +57,22 @@ public abstract class InterfaceUsuario {
             }
         }
 
-    /** Método abstrato para obter o valor dos imóveis de cada sub-classe. */
+    /**
+     * Método abstrato para obter o valor dos imóveis de cada sub-classe.
+     *
+     * @return Obtem valor do imóvel.
+     */
     public abstract double obterValorImovel();
     /**
      * Método abstrato para obter o prazo de financiamento de cada sub-classe.
+     *
+     * @return Obtem prazo de financiamento.
      */
     public abstract int obterPrazoFinanciamento();
-    /** Método abstrato para obter a taxa de juros de cada sub-classe. */
+    /**
+     * Método abstrato para obter a taxa de juros de cada sub-classe.
+     *
+     * @return Obtem porcentagem de juros anual.
+     */
     public abstract double obterTaxaJuros();
 }

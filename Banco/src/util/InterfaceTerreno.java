@@ -8,14 +8,14 @@ import simulation.Terreno;
 public class InterfaceTerreno extends InterfaceUsuario {
 
     // Método para conferir se ha valores negativos ou zerado.
-    private void conferirValoresNegativosOuZeroDouble(double valor)
+    private void conferirValoresNegativosOuZeroDouble(final double valor)
     throws ValoresNegativosOuIgualZeroException {
         if (valor <= 0) {
             throw new ValoresNegativosOuIgualZeroException(
                 "O valor informado é zero ou negativo.");
         }
     }
-    private void conferirValoresMinimoImovel(double valor)
+    private void conferirValoresMinimoImovel(final double valor)
     throws ValoresMinimoImovelException {
         if (valor < 200000) {
             throw new ValoresMinimoImovelException(
@@ -23,7 +23,7 @@ public class InterfaceTerreno extends InterfaceUsuario {
         }
     }
     // Método para conferir se ha valores negativos ou zerado.
-    private void conferirValoresNegativosOuZeroInt(int valor)
+    private void conferirValoresNegativosOuZeroInt(final int valor)
     throws ValoresNegativosOuIgualZeroException {
         if (valor <= 0) {
             throw new ValoresNegativosOuIgualZeroException(
@@ -32,14 +32,14 @@ public class InterfaceTerreno extends InterfaceUsuario {
     }
     // Método para conferir se ha valores acima do permitido.
     // O VALOR MÍNIMO E MÁXIMO PODE SER ALTERADO.
-    private void conferirValoresNaoPermitidosDouble(double valor)
+    private void conferirValoresNaoPermitidosDouble(final double valor)
     throws ValoresAcimaOuAbaixoDoPermitidoException {
-        // Caso queira alterar o valor maximo ou mínimo 
+        // Caso queira alterar o valor maximo ou mínimo
         // NÃO ESQUECER DE MUDAR A MENSAGEM JUNTO
         if (valor <= 0 || valor > 30.0) {
             throw new ValoresAcimaOuAbaixoDoPermitidoException(
-                "O valor informado está fora do permitido." + 
-                " O minimo de juros possível 0.1% e o maximo é 30.0%");
+                "O valor informado está fora do permitido."
+                + " O mínimo de juros possível 0.1% e o maximo é 30.0%");
         }
     }
 
@@ -54,7 +54,7 @@ public class InterfaceTerreno extends InterfaceUsuario {
                 // Solicita ao usuário o valor do imóvel.
                 // Eu substitui o valor atraves do scanner.
                 System.out.println(
-                    "Digite o valor do apartamento que deseja financiar: ");
+                    "Digite o valor do terreno que deseja financiar: ");
                 valorImovel += scanner.nextDouble();
                 // Informa ao usuário o prazo informado por ele.
                 System.out.printf("O valor da casa é: R$%.2f\n", valorImovel);
@@ -95,7 +95,8 @@ public class InterfaceTerreno extends InterfaceUsuario {
                 prazoFinanciamento += scanner.nextInt();
                 // Informa ao usuário o prazo informado por ele.
                 System.out.printf(
-                    "O prazo de financiamento é: %d anos\n", prazoFinanciamento);
+                    "O prazo de financiamento é: %d anos\n",
+                    prazoFinanciamento);
                 // Confere se há erro relacionado a valores negativos ou zerado.
                 conferirValoresNegativosOuZeroInt(prazoFinanciamento);
             // Captura o erro entrada de dado errada.
@@ -130,7 +131,7 @@ public class InterfaceTerreno extends InterfaceUsuario {
                 // Informa ao usuário o juros anual informado por ele.
                 System.out.println(
                     "A taxa de juros anual é: " + taxaJurosAnual +"%\n");
-                // Limita e confere o juros imposto no financiamento. 
+                // Limita e confere o juros imposto no financiamento.
                 // (O limitador pode ser alterado.)
                 conferirValoresNaoPermitidosDouble(taxaJurosAnual);
             // Captura o erro entrada de dado errada.
@@ -144,7 +145,7 @@ public class InterfaceTerreno extends InterfaceUsuario {
                 // Caso ocorra o erro, informa ao usuário.
                 System.out.println(
                     "O valor informado está fora do permitido." 
-                    + "O valor minimo de juros possível 0.1% e o maximo é 30.0%");
+                    + "O mínimo de juros possível 0.1% e o maximo é 30.0%");
                 continue;
             }
             return taxaJurosAnual;
@@ -185,7 +186,7 @@ public class InterfaceTerreno extends InterfaceUsuario {
                 // Informa o erro ao usuário e reinicia o loop.
                 } else {
                     System.out.println(
-                        "Tipo de zoneamento não encontrado" 
+                        "Tipo de zoneamento não encontrado"
                     );
 
                     continue;
@@ -194,7 +195,7 @@ public class InterfaceTerreno extends InterfaceUsuario {
             // Nesse caso qualquer caractere que não seja um número inteiro.
             } catch (InputMismatchException e) {
                 // Caso ocorra o erro, informa ao usuário.
-                System.out.println("Porfavor use apenas númerais");
+                System.out.println("Por favor use apenas númerais");
                 scanner = new Scanner(System.in);
                 continue;
             }
