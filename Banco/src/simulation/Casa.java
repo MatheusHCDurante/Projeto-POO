@@ -3,12 +3,20 @@ package simulation;
 import util.AumentoMaiorDoQueJurosException;
 
 public class Casa extends Financiamento {
+    /** Tamanho da área contruida no terreno. */
     private double tamanhoAreaConstruida;
+    /** Tamanho do terreno. */
     private double tamanhoDoTerreno;
 
     /**
      * Adiciona ao contrutor os atributos da classe Financiamento.
      * Junto aos atributos únicos da classe Casa.
+     * 
+     * @param valorImovel Valor do imóvel.
+     * @param prazoFinanciamento Prazo do financiamento.
+     * @param taxaJurosAnual Porcentagem de juros anual.
+     * @param tamanhoAreaConstruida Tamanho da área construida no terreno.
+     * @param tamanhoTerreno Tamanho do terreno.
      */
     public Casa(
         final double valorImovel,
@@ -24,7 +32,7 @@ public class Casa extends Financiamento {
     /**
      * Permite que outras partes do código visualize.
      *
-     * @return Retorna o tamanho do terreno indicado pelo usuário. 
+     * @return Retorna o tamanho do terreno indicado pelo usuário.
      */
     public double getAreaConstruida() {
         return tamanhoAreaConstruida;
@@ -33,7 +41,7 @@ public class Casa extends Financiamento {
     /**
      * Permite que outras partes do código visualize o TamanhoTerreno.
      *
-     * @return Retorna o tamanho do terreno indicado pelo usuário. 
+     * @return Retorna o tamanho do terreno indicado pelo usuário.
      */
     public double getTamanhoTerreno() {
         return tamanhoDoTerreno;
@@ -58,7 +66,7 @@ public class Casa extends Financiamento {
     /**
      * Calcula o valor do pagamento mensal de acordo com a classe.
      * Messe caso casa, metodo de calculo único da classe.
-     * 
+     *
      * @return Calculo de pagamento mensal.
      */
     public double calcularPagamentoMensal() {
@@ -100,8 +108,8 @@ public class Casa extends Financiamento {
 
     /**
      * Converte os atributos de Casa para string.
-     * 
-     * @return Mensagem com informações do financiamento.
+     *
+     * @return Retorna mensagem com informações do financiamento.
      */
     public String toString() {
         StringBuilder sb = new StringBuilder();

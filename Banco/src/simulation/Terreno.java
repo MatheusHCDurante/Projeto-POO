@@ -1,21 +1,30 @@
 package simulation;
 public class Terreno extends Financiamento {
+    /** Tipo de zoneamento */
     private String tipoDeZona;
 
     /**
-     * Adiciona ao contrutor os atributos da classe Financiamento
+     * Adiciona ao contrutor os atributos da classe Financiamento.
      * Junto aos atributos únicos da classe Terreno.
+     *
+     * @param valorImovel Retorna valor do imóvel.
+     * @param prazoFinanciamento Retorna prazo de financiamento.
+     * @param taxaJurosAnual Retorna porcentagem de juros anual.
      */
     public Terreno(
-        double valorImovel,
-        int prazoFinanciamento,
-        double taxaJurosAnual,
+        final double valorImovel,
+        final int prazoFinanciamento,
+        final double taxaJurosAnual,
         String tipoDeZona) {
             super(valorImovel, prazoFinanciamento, taxaJurosAnual);
             this.tipoDeZona = tipoDeZona;
         }
 
-    /** permite que outras partes do código visualize o tipo de terreno. */
+    /**
+     * Permite que outras partes do código visualize o tipo de terreno. 
+     *
+     * @return Retorna tipo de zoneamento do terreno.
+     */
     public String getTipoDeZona() {
         return tipoDeZona;
     }
@@ -23,14 +32,18 @@ public class Terreno extends Financiamento {
     /**
      * Calcula o valor do pagamento mensal de acordo com a classe.
      * Nesse caso casa, metodo de calculo único da classe.
+     * 
+     * @return Retorna valor de pagamento mensal.
      */
     public double calcularPagamentoMensal() {
         return (getValorImovel() / (getPrazoFinanciamento() * 12))
         * (1 + (this.getTaxaJurosAnual() / 12)) * 1.02;
     }
 
-    // Sobrescreve o método abstrato imprimirDados.
-    // Adicionando os atributos únicos da classe Terreno.
+    /**
+     * Sobrescreve o método abstrato imprimirDados.
+     * Adicionando os atributos únicos da classe Terreno.
+     */
     @Override
     public void imprimirDados() {
         System.out.println("----------Financiamento de Terrenos----------");
@@ -43,7 +56,11 @@ public class Terreno extends Financiamento {
          calcularPagamentoMensal(), calcularTotalPagamento());
     }
 
-    /** Converte os atributos de Terreno para string. */
+    /**
+     * Converte os atributos de Terreno para string.
+     *
+     * @return Retorna mensagem com informações do financiamento.
+     */
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Financiamento de Terreno\n");

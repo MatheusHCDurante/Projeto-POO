@@ -23,7 +23,7 @@ import util.InterfaceTerreno;
 
 
 public class Main {
-    /** 
+    /**
      * Definindo lista que guardara os financiamentos.
      */
     public static List<Financiamento> listaDeFinanciamento =
@@ -127,7 +127,11 @@ public class Main {
         listaDeFinanciamento.add(new Terreno(1000000, 2, 10, "Residêncial"));
     }
 
-    /** Início do main. */
+    /**
+     * Início do main.
+     *
+     * @param args argumentos recebidos.
+     */
     public static void main(final String[] args) {
         InterfaceCasa interfaceCasa = new InterfaceCasa();
         InterfaceApartamento interfaceApartamento = new InterfaceApartamento();
