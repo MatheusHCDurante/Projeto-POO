@@ -6,6 +6,11 @@ import simulation.Terreno;
 
 public class InterfaceTerreno extends InterfaceUsuario {
 
+    /** Valor minimo de terreno */
+    private static final  double valorMinTerreno = 200000.0;
+    /** Valor máximo de juros */
+    private static final  double valorMaxJuros = 30.0;
+
     // Método para conferir se ha valores negativos ou zerado.
     private void conferirValoresNegativosOuZeroDouble(final double valor)
     throws ValoresNegativosOuIgualZeroException {
@@ -16,7 +21,7 @@ public class InterfaceTerreno extends InterfaceUsuario {
     }
     private void conferirValoresMinimoImovel(final double valor)
     throws ValoresMinimoImovelException {
-        if (valor < 200000) {
+        if (valor < valorMinTerreno) {
             throw new ValoresMinimoImovelException(
                 "O valor minimo de deve ser 200000,00.");
         }
@@ -35,7 +40,7 @@ public class InterfaceTerreno extends InterfaceUsuario {
     throws ValoresAcimaOuAbaixoDoPermitidoException {
         // Caso queira alterar o valor maximo ou mínimo
         // NÃO ESQUECER DE MUDAR A MENSAGEM JUNTO
-        if (valor <= 0 || valor > 30.0) {
+        if (valor <= 0 || valor > valorMaxJuros) {
             throw new ValoresAcimaOuAbaixoDoPermitidoException(
                 "O valor informado está fora do permitido."
                 + " O mínimo de juros possível 0.1% e o maximo é 30.0%");

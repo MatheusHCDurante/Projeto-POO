@@ -2,6 +2,10 @@ package simulation;
 public class Terreno extends Financiamento {
     /** Tipo de zoneamento. */
     private String tipoDeZona;
+    /** Quantidade meses por ano. */
+    private static final int mesesPorAno = 12;
+    /** Valor de acrecimo no valor do financiamento. */
+    private static final double acrescimoTerreno = 1.02;
 
     /**
      * Adiciona ao contrutor os atributos da classe Financiamento.
@@ -37,8 +41,8 @@ public class Terreno extends Financiamento {
      * @return Retorna valor de pagamento mensal.
      */
     public double calcularPagamentoMensal() {
-        return (getValorImovel() / (getPrazoFinanciamento() * 12))
-        * (1 + (this.getTaxaJurosAnual() / 12)) * 1.02;
+        return (getValorImovel() / (getPrazoFinanciamento() * mesesPorAno))
+        * (1 + (this.getTaxaJurosAnual() / mesesPorAno)) * acrescimoTerreno;
     }
 
     /**
@@ -65,18 +69,18 @@ public class Terreno extends Financiamento {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Financiamento de Terreno\n");
-        sb.append("Valor da terreno: R$ ")
-        .append(getValorImovel()).append("\n");
+        sb.append(String.format("Valor da terreno: R$ %.2f",
+        getValorImovel())).append("\n");
         sb.append("Prazo de financiamento: ")
         .append(getPrazoFinanciamento()).append(" anos.\n");
         sb.append("Taxa de Juros Anual: ")
         .append(getTaxaJurosAnual()).append("%.\n");
         sb.append("Tipo de zoneamento: ")
         .append(tipoDeZona).append("\n");
-        sb.append("Valor mensal: R$ ")
-        .append(calcularPagamentoMensal()).append("\n");
-        sb.append("Valor total do financiamento: R$ ")
-        .append(calcularTotalPagamento()).append("\n\n");
+        sb.append(String.format("Valor mensal: R$ %.2f",
+            calcularPagamentoMensal())).append("\n");
+        sb.append(String.format("Valor total do financiamento: R$ %.2f",
+            calcularTotalPagamento())).append("\n\n");
         return sb.toString();
     }
 }

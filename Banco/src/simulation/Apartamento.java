@@ -5,6 +5,8 @@ public class Apartamento extends Financiamento {
     private int numeroDeVagasGaragem;
     /** Andar do apartamento. */
     private int numeroDoAndar;
+    /** Quantidade meses por ano. */
+    private static final int mesesPorAno = 12;
 
     /**
      * Adiciona ao contrutor os atributos da classe Financiamento.
@@ -57,7 +59,7 @@ public class Apartamento extends Financiamento {
      * @return Porcentagem de juros mensal.
      */
     public double taxaDeJurosMensal() {
-        return getTaxaJurosAnual() / 12;
+        return getTaxaJurosAnual() / mesesPorAno;
     }
 
     /**
@@ -66,7 +68,7 @@ public class Apartamento extends Financiamento {
      * @return Retorna quantidade de meses de financiamento.
      */
     public double prazoMensal() {
-        return getPrazoFinanciamento() * 12;
+        return getPrazoFinanciamento() * mesesPorAno;
     }
 
     /**
@@ -106,19 +108,19 @@ public class Apartamento extends Financiamento {
         StringBuilder sb = new StringBuilder();
         sb.append("Financiamento de Apartamento\n");
         sb.append("Valor do apartamento: R$ ")
-        .append(getValorImovel()).append("\n");
+            .append(getValorImovel()).append("\n");
         sb.append("Prazo de financiamento: ")
-        .append(getPrazoFinanciamento()).append(" anos.\n");
+            .append(getPrazoFinanciamento()).append(" anos.\n");
         sb.append("Taxa de Juros Anual: ")
-        .append(getTaxaJurosAnual()).append("%.\n");
+            .append(getTaxaJurosAnual()).append("%.\n");
         sb.append("Quantidade de vagas na garagem: ")
-        .append(numeroDeVagasGaragem).append("\n");
+            .append(numeroDeVagasGaragem).append("\n");
         sb.append("Número do andar: ")
-        .append(numeroDoAndar).append("\n");
-        sb.append("Valor mensal: R$ ")
-        .append(calcularPagamentoMensal()).append("\n");
-        sb.append("Valor total do financiamento: R$ ")
-        .append(calcularTotalPagamento()).append("\n\n");
+            .append(numeroDoAndar).append("\n");
+        sb.append(String.format("Valor mensal: R$ %.2f",
+            calcularPagamentoMensal())).append("\n");
+        sb.append(String.format("Valor total do financiamento: R$ %.2f",
+            calcularTotalPagamento())).append("\n\n");
         return sb.toString();
     }
 }

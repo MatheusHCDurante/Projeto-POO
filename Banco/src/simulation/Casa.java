@@ -7,6 +7,10 @@ public class Casa extends Financiamento {
     private double tamanhoAreaConstruida;
     /** Tamanho do terreno. */
     private double tamanhoDoTerreno;
+    /** Quantidade meses por ano. */
+    private static final int mesesPorAno = 12;
+    /** Valor de acrecimo no valor do financiamento. */
+    private static final double acrescimoTerreno = 80;
 
     /**
      * Adiciona ao contrutor os atributos da classe Financiamento.
@@ -15,7 +19,7 @@ public class Casa extends Financiamento {
      * @param valorImovel Valor do imóvel.
      * @param prazoFinanciamento Prazo do financiamento.
      * @param taxaJurosAnual Porcentagem de juros anual.
-     * @param tamanhoAreaConstruida Tamanho da área construida no terreno.
+     * @param tamanhoDaAreaConstruida Tamanho da área construida no terreno.
      * @param tamanhoTerreno Tamanho do terreno.
      */
     public Casa(
@@ -53,10 +57,10 @@ public class Casa extends Financiamento {
         throws AumentoMaiorDoQueJurosException {
 
         valorDeJuros = (this.getValorImovel()
-            / (this.getPrazoFinanciamento() * 12))
-            * (1 + (this.getTaxaJurosAnual() / 12))
-            - (this.getValorImovel() / (this.getPrazoFinanciamento() * 12));
-        valorAcrescimo = 80;
+            / (this.getPrazoFinanciamento() * mesesPorAno))
+            * (1 + (this.getTaxaJurosAnual() / mesesPorAno))
+            - (this.getValorImovel() / (this.getPrazoFinanciamento() * mesesPorAno));
+        valorAcrescimo = acrescimoTerreno;
         if (valorDeJuros < valorAcrescimo) {
             throw new AumentoMaiorDoQueJurosException(
                 "O valor do acrescimo é maior que o juros,"
@@ -71,15 +75,14 @@ public class Casa extends Financiamento {
      */
     public double calcularPagamentoMensal() {
         double valorDeJuros = (this.getValorImovel()
-            / (this.getPrazoFinanciamento() * 12))
-            * (1 + (this.getTaxaJurosAnual() / 12)) - (this.getValorImovel()
-            / (this.getPrazoFinanciamento() * 12));
+            / (this.getPrazoFinanciamento() * mesesPorAno))
+            * (1 + (this.getTaxaJurosAnual() / mesesPorAno)) - (this.getValorImovel()
+            / (this.getPrazoFinanciamento() * mesesPorAno));
 
-        double valorAcrescimo = 80;
+        double valorAcrescimo = acrescimoTerreno;
         if (valorAcrescimo > valorDeJuros) {
             valorAcrescimo = valorDeJuros;
         }
-        valorAcrescimo = 80;
         try {
         conferirValorAcrescimo(valorDeJuros, valorAcrescimo);
         } catch (AumentoMaiorDoQueJurosException e) {
@@ -124,10 +127,10 @@ public class Casa extends Financiamento {
             .append(tamanhoAreaConstruida).append("m²\n");
         sb.append("Tamanho do terreno: ")
             .append(tamanhoDoTerreno).append("m²\n");
-        sb.append("Valor mensal: R$ ")
-            .append(calcularPagamentoMensal()).append("\n");
-        sb.append("Valor total do financiamento: R$ ")
-            .append(calcularTotalPagamento()).append("\n\n");
+        sb.append(String.format("Valor mensal: R$ %.2f",
+            calcularPagamentoMensal())).append("\n");
+        sb.append(String.format("Valor total do financiamento: R$ %.2f",
+            calcularTotalPagamento())).append("\n\n");
         return sb.toString();
     }
 }

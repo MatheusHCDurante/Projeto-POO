@@ -14,7 +14,8 @@ public abstract class Financiamento implements Serializable {
     private static double valorTotalImoveis;
     /** Valor total dos financiamentos simulados. */
     private static double valorTotalFinanciamentos;
-
+    /** Quantidade de meses em um ano para calculo */
+    private static final int mesesPorAno = 12;
     /** Construtor.
      *
      * @param valorDoImovel Valor inicial do imovel.
@@ -75,7 +76,7 @@ public abstract class Financiamento implements Serializable {
      */
     public double calcularTotalPagamento() {
         return this.calcularPagamentoMensal()
-        * (this.prazoFinanciamentoEmAnos * 12);
+        * (this.prazoFinanciamentoEmAnos * mesesPorAno);
     }
 
     /**
