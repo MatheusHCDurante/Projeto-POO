@@ -38,7 +38,8 @@ public class InterfaceTerreno extends InterfaceUsuario {
         // NÃO ESQUECER DE MUDAR A MENSAGEM JUNTO
         if (valor <= 0 || valor > 30.0) {
             throw new ValoresAcimaOuAbaixoDoPermitidoException(
-                "O valor informado está fora do permitido. O minimo de juros possível 0.1% e o maximo é 30.0%");
+                "O valor informado está fora do permitido." + 
+                " O minimo de juros possível 0.1% e o maximo é 30.0%");
         }
     }
 
@@ -88,7 +89,8 @@ public class InterfaceTerreno extends InterfaceUsuario {
             // Valor base do prazo de financiamento.
             int prazoFinanciamento = 0;
             try {
-                // Solicita ao usuário o prazo de inanciamento, eu substitui o valor atraves do scanner.
+                // Solicita ao usuário o prazo de inanciamento.
+                // Eu substitui o valor atraves do scanner.
                 System.out.println("Digite o prazo de pagamento em anos: ");
                 prazoFinanciamento += scanner.nextInt();
                 // Informa ao usuário o prazo informado por ele.
@@ -141,7 +143,8 @@ public class InterfaceTerreno extends InterfaceUsuario {
             } catch (ValoresAcimaOuAbaixoDoPermitidoException e) {
                 // Caso ocorra o erro, informa ao usuário.
                 System.out.println(
-                    "O valor informado está fora do permitido. O valor minimo de juros possível 0.1% e o maximo é 30.0%");
+                    "O valor informado está fora do permitido." 
+                    + "O valor minimo de juros possível 0.1% e o maximo é 30.0%");
                 continue;
             }
             return taxaJurosAnual;
@@ -159,7 +162,8 @@ public class InterfaceTerreno extends InterfaceUsuario {
                 // Pode ser adicionado mais, caso seja nescesario.
                 // NESSE CASO SE ATENTAR EM MUDAR O CÓDIGO.
                 System.out.println(
-                    "Escolha o tipo de zoneamento:\n(1) Residêncial.\n(2) Comercial.\n(3) Industrial.");
+                    "Escolha o tipo de zoneamento:" 
+                    + "\n(1) Residêncial.\n(2) Comercial.\n(3) Industrial.");
                 tipoZoneamento += scanner.nextInt();
 
                 // Na opção 1, informa a escolha para o úsario.
@@ -181,11 +185,13 @@ public class InterfaceTerreno extends InterfaceUsuario {
                 // Informa o erro ao usuário e reinicia o loop.
                 } else {
                     System.out.println(
-                        "Tipo de zoneamento não encontrado, escolha entre os existente.");
+                        "Tipo de zoneamento não encontrado" 
+                    );
+
                     continue;
                 }  
             // Captura o erro entrada de dado errada.
-            // Nesse caso qualquer caractere que não seja um número inteiro.         
+            // Nesse caso qualquer caractere que não seja um número inteiro.
             } catch (InputMismatchException e) {
                 // Caso ocorra o erro, informa ao usuário.
                 System.out.println("Porfavor use apenas númerais");

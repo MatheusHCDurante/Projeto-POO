@@ -3,11 +3,14 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public abstract class InterfaceUsuario {
-    /*
-     * Obter dados apartir do usuário
-     */
+    /**
+      * Obter dados apartir do usuário
+      */
     Scanner scanner = new Scanner(System.in);
-    // Método para conferir se ha valores negativos ou zerado, para números inteiros.
+    /**
+     * Método para conferir se ha valores negativos ou zerado.
+     * Para números inteiros.
+     */
     static public void conferirValoresNegativosOuZero(int tipoFinanciamento)
     throws ValoresNegativosOuIgualZeroException {
         if (tipoFinanciamento <= 0) {
@@ -16,16 +19,19 @@ public abstract class InterfaceUsuario {
         }
     }
 
-    // Solicita para o úsiario qual o tipo de financiamento ele quer fazer
+    /** Solicita para o úsiario qual o tipo de financiamento ele quer fazer */
     public int obterTipoDeFinanciamento() {
-        while (true) { 
+        while (true) {
             // Define o valor base para o tipo de Financiamento.
             int tipoFinanciamento = 0;
             Scanner scanner = new Scanner(System.in);
             try {
                 // Oferece ao usário opções e solicita o tamanho do
                 // terreno e substitui o valor atraves do scanner.
-                System.out.println("Escolha qual o tipo de ímovel que você deseja financiar:\n(1) Casa.\n(2) Apartamento.\n(3) Terreno.\n");
+                System.out.println(
+                    "Escolha qual o tipo de ímovel que você deseja financiar:"
+                    + "\n(1) Casa.\n(2) Apartamento.\n(3) Terreno.\n"
+                );
                 tipoFinanciamento += scanner.nextInt();
                 // Informa ao usuário o tipo de financiamento selecionado.
                 conferirValoresNegativosOuZero(tipoFinanciamento);
