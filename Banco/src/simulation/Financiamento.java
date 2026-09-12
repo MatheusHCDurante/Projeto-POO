@@ -59,7 +59,8 @@ public abstract class Financiamento implements Serializable {
      * Calcula o valor de pagamento total.
      */
     public double calcularTotalPagamento() {
-        return this.calcularPagamentoMensal() * (this.prazoFinanciamentoEmAnos * 12);
+        return this.calcularPagamentoMensal() * 
+        (this.prazoFinanciamentoEmAnos * 12);
     }
 
     /**
@@ -75,7 +76,7 @@ public abstract class Financiamento implements Serializable {
     }
 
     /**
-     *  Calcula o valor total da soma de todos os financiamentos 
+     *  Calcula o valor total da soma de todos os financiamentos
      * cadastrados na lista listaDeFinanciamento.
      */
     static public double calcularValorTotalFinanciamentos() {
@@ -93,7 +94,7 @@ public abstract class Financiamento implements Serializable {
      * depois os resultados das operações necessárias 
      * para o calculo do financiamento.
      */
-    public abstract void imprimirDados();   
+    public abstract void imprimirDados();
 
     /**
      * Imprime o valor total de todos os imovéis
@@ -101,7 +102,7 @@ public abstract class Financiamento implements Serializable {
      */ 
     static public void imprimirValores() {
         System.out.println("\n----------Valor Total Imovéis----------");
-        System.out.printf("Valor total dos imovéis é: R$%.2f\n", 
+        System.out.printf("Valor total dos imovéis é: R$%.2f\n",
         calcularValorTotalImoveis());
         System.out.println("\n----------Valor Total Financiamentos----------");
         System.out.printf("Valor total dos financiamentos é: R$%.2f\n", 

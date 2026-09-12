@@ -23,12 +23,12 @@ import util.InterfaceTerreno;
 
 
 public class Main {
-    /**
+    /** 
      * Definindo lista que guardara os financiamentos
      */
-    public static List<Financiamento> listaDeFinanciamento = 
+    public static List<Financiamento> listaDeFinanciamento =
         new ArrayList<Financiamento>();
-    /**
+    /** 
      * Método para fazer a leitura dos dados salvo no arquivo
      * "financiamentos.txt"
      */
@@ -57,10 +57,10 @@ public class Main {
     public static void escreverDadosSerializados() {
         ObjectOutputStream escritor2 = null;
         try {
-            /**
-             * Cria uma nova entrada de objeto em um novo arquivo
-             * "Financiamento2.txt", chamado escritor2
-             */
+            /* 
+            Cria uma nova entrada de objeto em um novo arquivo
+            "Financiamento2.txt", chamado escritor2
+            */
             escritor2 = new ObjectOutputStream(
                 new FileOutputStream("Financiamento2.txt"));
             for (Financiamento obj : listaDeFinanciamento) {
@@ -111,8 +111,8 @@ public class Main {
         // Captura de erro IO.
         } catch (IOException e) {
             e.printStackTrace();
-        } 
-    } 
+        }
+    }
 
     public static void carregarFinanciamentosIniciais() {
         listaDeFinanciamento.add(new Casa(2000, 1, 1.0, 81, 360));
@@ -142,13 +142,13 @@ public class Main {
             escritor.write(apartamento.toString());
             escritor.write(apartamento2.toString());
             escritor.write(terreno.toString());
-            // Finaliza o escritor 
+            // Finaliza o escritor
             escritor.flush();
             escritor.close();
         // Captura de erro de arquivos não encontrado.
         } catch (FileNotFoundException e) {
             // Informa o erro ao usuário.
-            System.out.println("Arquivo não encontrado! Reinicando o programa.");
+            System.out.println("Arquivo não encontrado! Reinicando.");
         // Captura de erro IO. 
         } catch (IOException e) {
             e.printStackTrace();
@@ -164,28 +164,31 @@ public class Main {
             double tamanhoAreaConstruida = interfaceCasa.obterTamanhoAreaConstruida();
             double tamanhoDoTerreno = interfaceCasa.obterTamanhoDoTerreno();
             // Adiciona uma nova casa na listaDeFinanciamento. 
-            interfaceCasa.adicionarALista(valorImovel, prazoFinanciamento, taxaJurosAnual, tamanhoAreaConstruida, tamanhoDoTerreno);
+            interfaceCasa.adicionarALista(
+                valorImovel, prazoFinanciamento, taxaJurosAnual,
+                tamanhoAreaConstruida, tamanhoDoTerreno);
 
-            /** 
-             * Salvamento  e leitura de dados
-             * Instância uma nova casa, atraves das informações dadas pelo úsuario.
-             */
-            Financiamento casa3 = new Casa(valorImovel, prazoFinanciamento, taxaJurosAnual, prazoFinanciamento, taxaJurosAnual);
-            /** Instância o escrito e define como nulo. */
+            // Salvamento  e leitura de dados 
+            // Instância nova casa, atraves das
+            // informações obtidas do úsuario.
+            Financiamento casa3 = new Casa(
+                valorImovel, prazoFinanciamento, taxaJurosAnual,
+                prazoFinanciamento, taxaJurosAnual);
+            // Instância o escrito e define como nulo.
             try {
-                /**
-                 * Define o escritor com arquivo "financiamentos.txt",
-                 * e não permite que ele sobrescreva as informações já existente.
-                 */
+                /*
+                Define o escritor com arquivo "financiamentos.txt",
+                e não permite que ele sobrescreva as informações já existente.
+                */
                 escritor = new FileWriter("financiamentos.txt", true);
                 escritor.write(casa3.toString());
-                /** Finaliza o escritor */
+                //Finaliza o escritor
                 escritor.flush();
                 escritor.close();
             // Captura de erro de arquivos não encontrado.
             } catch (FileNotFoundException e) {
                 // Informa o erro ao usuário. 
-                System.out.println("Arquivo não encontrado! Reinicando o programa.");
+                System.out.println("Arquivo não encontrado! Reinicando.");
             // Captura de erro IO. 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -209,14 +212,19 @@ public class Main {
             int numeroDeVagasGaragem = interfaceApartamento.obterNumeroDeVagasGaragem();
             int numeroDoAndar = interfaceApartamento.obterNumeroDoAndar();
             // Adiciona um novo apartamento na listaDeFinanciamento.
-            interfaceApartamento.adicionarALista(valorImovel, prazoFinanciamento, taxaJurosAnual, numeroDeVagasGaragem, numeroDoAndar);
+            interfaceApartamento.adicionarALista(
+                valorImovel, prazoFinanciamento, taxaJurosAnual,
+                numeroDeVagasGaragem, numeroDoAndar);
 
             
             // Instância um novo apartamento, atraves das informações dadas pelo úsuario.
-            Financiamento apartamento3 = new Apartamento(valorImovel, prazoFinanciamento, taxaJurosAnual, numeroDeVagasGaragem, numeroDoAndar);
+            Financiamento apartamento3 = new Apartamento(
+                valorImovel, prazoFinanciamento, taxaJurosAnual,
+                numeroDeVagasGaragem, numeroDoAndar);
             // Instância o escrito e define como nulo.
             try {
-                // Define o escritor com arquivo "financiamentos.txt", e não permite que ele sobrescreva as informações já existente.
+                // Define o escritor com arquivo "financiamentos.txt", e 
+                // não permite que ele sobrescreva as informações já existente.
                 escritor = new FileWriter("financiamentos.txt", true);
                 escritor.write(apartamento3.toString());
                 // Finaliza o escritor 
@@ -225,7 +233,7 @@ public class Main {
             // Captura de erro de arquivos não encontrado.
             } catch (FileNotFoundException e) {
                 //Informa o erro ao usuário.
-                System.out.println("Arquivo não encontrado! Reinicando o programa.");
+                System.out.println("Arquivo não encontrado! Reinicando.");
             // Captura de erro IO.
             } catch (IOException e) {
                 e.printStackTrace();
@@ -248,15 +256,20 @@ public class Main {
             double taxaJurosAnual = interfaceTerreno.obterTaxaJuros();
             String tipoZoneamento = interfaceTerreno.obterTipoDeZoneamento();
             // Adiciona um novo terreno na listaDeFinanciamento.
-            interfaceTerreno.adicionarALista(valorImovel, prazoFinanciamento, taxaJurosAnual, tipoZoneamento);
+            interfaceTerreno.adicionarALista(
+                valorImovel, prazoFinanciamento,
+                taxaJurosAnual, tipoZoneamento);
 
             // Instância um novo terreno, atraves das informações dadas pelo úsuario.
-            Financiamento terreno2 = new Terreno(valorImovel, prazoFinanciamento, taxaJurosAnual, tipoZoneamento);
+            Financiamento terreno2 = new Terreno(
+                valorImovel, prazoFinanciamento,
+                taxaJurosAnual, tipoZoneamento);
             // Instância o escritor.
             try {
-                /** Define o escritor com arquivo "financiamentos.txt",
-                 *  e não permite que ele sobrescreva as informações já existente.
-                 */
+                /* 
+                Define o escritor com arquivo "financiamentos.txt",
+                e não permite que ele sobrescreva as informações já existente.
+                */
                 escritor = new FileWriter("financiamentos.txt", true);
                 escritor.write(terreno2.toString());
                 // Finaliza o escritor
@@ -265,7 +278,7 @@ public class Main {
             // Captura de erro de arquivos não encontrado.
             } catch (FileNotFoundException e) {
                 // Informa o erro ao usuário.
-                System.out.println("Arquivo não encontrado! Reinicando o programa.");
+                System.out.println("Arquivo não encontrado! Reinicando.");
             // Captura de erro IO.
             } catch (IOException e) {
                 e.printStackTrace();
