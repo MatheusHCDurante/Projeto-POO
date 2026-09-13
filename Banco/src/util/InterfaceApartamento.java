@@ -191,41 +191,50 @@ public class InterfaceApartamento extends InterfaceUsuario {
     }
 
     /**
+     * Obtém um valor decimal positivo informado pelo usuário.
+     * Filtro de erro.
+     *
+     * @param mensagem mensagem exibida para solicitar o valor.
+     * @return valor decimal informado.
+     */
+    private int obterInteiroPositivo(final String mensagem) {
+        while (true) {
+            try {
+                System.out.println(mensagem);
+
+                int valor = getScanner().nextInt();
+
+                conferirValoresNegativosOuZeroDouble(valor);
+
+                return valor;
+
+            } catch (InputMismatchException e) {
+                System.out.println("Porfavor use apenas númerais");
+                getScanner().next();
+
+            } catch (ValoresNegativosOuIgualZeroException e) {
+                System.out.println(
+                    "Número negativo, porfavor use apenas números positivos");
+            }
+        }
+    }
+
+    /**
      * Método próprio para obter o atributo próprio da classe Apartamento.
      * No caso o número de vagas na garagem.
      *
      * @return Número de vagas de garagem.
      */
     public int obterNumeroDeVagasGaragem() {
-        while (true) {
-            // Define o valor base para o número de vagas na garagem.
-            int numeroDeVagasGaragem = 0;
-            try {
-                // Solicita ao usuário o número de vagas.
-                // E substitui o valor atraves do scanner.
-                System.out.println("Digite o número de vagas na garagem; ");
-                numeroDeVagasGaragem += getScanner().nextInt();
-                // Informa ao usuário o número de vagas na garagem..
-                System.out.println("O número de vagas é: " + numeroDeVagasGaragem);
-                // Confere se há erro relacionado a valores negativos ou zerado.
-                conferirValoresNegativosOuZeroDouble(numeroDeVagasGaragem);
-            // Captura o erro entrada de dado errado.
-            // Nesse caso qualquer caractere que não seja um número inteiro.
-            }  catch (InputMismatchException e) {
-                // Caso ocorra o erro, informa ao usuário.
-                System.out.println("Porfavor use apenas númerais");
-                getScanner().next();
-                continue;
-            // Captura o erro da entrada de valores negativos ou zerado.
-            } catch (ValoresNegativosOuIgualZeroException e) {
-                // Caso ocorra o erro, informa ao usuário.
-                System.out.println(
-                    "Número negativo, porfavor use apenas números positivos");
-                continue;
-            }
+        int numeroDeVagasGaragem = obterInteiroPositivo(
+            "Digite o número de vagas: ");
+    
+        System.out.printf(
+            "O número de vagas é %d.%n",
+            numeroDeVagasGaragem);
+    
             return numeroDeVagasGaragem;
         }
-    }
 
     /**
      * Método próprio para obter o atributo próprio da classe Apartamento.
@@ -234,36 +243,13 @@ public class InterfaceApartamento extends InterfaceUsuario {
      * @return Andar do apartamento
      */
     public int obterNumeroDoAndar() {
-        while (true) {
-            // Define o valor base para o número de vagas na garagem.
-            int numeroDoAndar = 0;
-            try {
-                // Solicita ao usuário o número de vagas,
-                // E substitui o valor atraves do scanner.
-                System.out.println("Digite o andar do apartamento: ");
-                numeroDoAndar += getScanner().nextInt();
-                // Informa ao usuário o número de vagas na garagem.
-                System.out.printf(
-                    "O andar do apartamento é %d.\n", numeroDoAndar);
-                // Confere se há erro de valores negativos ou zerado.
-                conferirValoresNegativosOuZeroDouble(numeroDoAndar);
-            // Captura o erro entrada de dado errado.
-            // Nesse caso qualquer caractere que não seja um número inteiro.
-            } catch (InputMismatchException e) {
-                // Caso ocorra o erro, informa ao usuário.
-                System.out.println("Porfavor use apenas númerais");
-                getScanner().next();
-                continue;
-            // Captura o erro da entrada de valores negativos ou zerado.
-            } catch (ValoresNegativosOuIgualZeroException e) {
-                // Caso ocorra o erro, informa ao usuário.
-                System.out.println(
-                    "Número negativo, porfavor use apenas números positivos");
-                continue;
-            }
-            getScanner().close();
-            return numeroDoAndar;
-        }
+        int numeroDoAndar = obterInteiroPositivo(
+            "Digite o andar do apartamento: ");
+    
+        System.out.printf(
+            "O andar do apartamento é %d.%n",
+            numeroDoAndar);
+        return numeroDoAndar;
     }
 
     /**
