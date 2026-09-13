@@ -11,7 +11,7 @@ public final class InterfaceCasa extends InterfaceUsuario {
     /** Valor máximo de juros. */
     private static final double VALOR_MAX_JUROS = 30.0;
     /**
-     * Método para conferir se ha valores negativos ou zerado.
+     * Método para conferir se ha valores inteiro negativos ou zerado.
      * Para números reais.
      *
      * @param valor Valor recebido.
@@ -24,7 +24,7 @@ public final class InterfaceCasa extends InterfaceUsuario {
             }
         }
     /**
-     * Método para conferir se ha valores negativos ou zerado.
+     * Método para conferir se ha valores double negativos ou zerado.
      * Para números inteiros.
      *
      * @param valor Valor recebido.
@@ -187,7 +187,7 @@ public final class InterfaceCasa extends InterfaceUsuario {
     /**
      * Obtém um valor decimal positivo informado pelo usuário.
      * Filtro de erro.
-     * 
+     *
      * @param mensagem mensagem exibida para solicitar o valor.
      * @return valor decimal informado.
      */
@@ -247,10 +247,11 @@ public final class InterfaceCasa extends InterfaceUsuario {
         }
     /**
      * Adiciona uma nova casa à listaDeFinancimanto.
+     *
      * @param valorImovel armazena o valor o imóvel.
      * @param prazoFincanciamento armazena prazo de financiamento.
      * @param taxaJurosAnual armazena juros anual em %.
-     * @param tamanhoAreaConstruida tamnho de área construida.
+     * @param tamanhoAreaConstruida tamanho de área construida.
      * @param tamanhoDoTerreno tamanho do terreno.
      */
     public void adicionarALista(
