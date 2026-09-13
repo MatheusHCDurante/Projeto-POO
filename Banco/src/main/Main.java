@@ -22,12 +22,19 @@ import util.InterfaceTerreno;
 
 
 
-public class Main {
+public final class Main {
     /**
      * Construtor privado para impedir a criação de objetos da classe.
      */
     private Main() {
     }
+
+    private static final int FINANCIAMENTO_CASA = 1;
+    /** Código para zoneamento comercial. */
+    private static final int FINANCIAMENTO_APARTAMENTO = 2;
+    /** Código para zoneamento industrial. */
+    private static final int FINANCIAMENTO_TERRENO = 3;
+
     /**
      * Definindo lista que guardara os financiamentos.
      */
@@ -139,7 +146,21 @@ public class Main {
         listaDeFinanciamento.add(new Apartamento(154000, 2, 0.8, 3, 75));
         listaDeFinanciamento.add(new Terreno(1000000, 2, 10, "Residêncial"));
     }
+    /**
+     * Escreve os financiamentos em arquivo de texto.
+     */
+    public static void escreverFinanciamentosTxt() {
+        try (FileWriter escritor =
+                new FileWriter("financiamentos.txt")) {
 
+            for (Financiamento financiamento : listaDeFinanciamento) {
+                escritor.write(financiamento.toString());
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * Início do main.
      *
@@ -153,25 +174,9 @@ public class Main {
         FileWriter escritor = null;
 
         carregarFinanciamentosIniciais();
-        try {
-            escritor = new FileWriter("financiamentos.txt");
+        escreverFinanciamentosTxt();
 
-            for (Financiamento financiamento : listaDeFinanciamento) {
-                escritor.write(financiamento.toString());
-            }
-        
-            escritor.flush();
-            escritor.close();
-        // Captura de erro de arquivos não encontrado.
-        } catch (FileNotFoundException e) {
-            // Informa o erro ao usuário.
-            System.out.println("Arquivo não encontrado! Reinicando.");
-        // Captura de erro IO.
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        if (opcaoFinanciamento == 1) {
+        if (opcaoFinanciamento == FINANCIAMENTO_CASA) {
             // Atributos bases de Financiamento + atributos únicos de Casa.
             double valorImovel = interfaceCasa.obterValorImovel();
             int prazoFinanciamento = interfaceCasa.obterPrazoFinanciamento();
@@ -220,7 +225,7 @@ public class Main {
             Financiamento.imprimirValores();
 
         // Se o úsuario escolhe a opção 3 inicia o código do Apartamento.
-        } else if (opcaoFinanciamento == 2) {
+        } else if (opcaoFinanciamento == FINANCIAMENTO_APARTAMENTO) {
             // Atributos bases de Financiamento +
             // Atributos únicos de Apartamento.
             double valorImovel = interfaceApartamento.obterValorImovel();
@@ -268,7 +273,7 @@ public class Main {
             Financiamento.imprimirValores();
 
             // Se o úsuario escolhe a opção 3 inicia o código do Terreno.
-        } else if (opcaoFinanciamento == 3) {
+        } else if (opcaoFinanciamento == FINANCIAMENTO_TERRENO) {
             // Atributos bases de Financiamento + atributos únicos de Terreno
             double valorImovel = interfaceTerreno.obterValorImovel();
             int prazoFinanciamento = interfaceTerreno.obterPrazoFinanciamento();
