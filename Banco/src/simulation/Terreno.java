@@ -14,7 +14,7 @@ public class Terreno extends Financiamento {
      * @param valorImovel Retorna valor do imóvel.
      * @param prazoFinanciamento Retorna prazo de financiamento.
      * @param taxaJurosAnual Retorna porcentagem de juros anual.
-     * @param tipoDeZona Retorna tipo de zoneamento.
+     * @param tipoZona Retorna tipo de zoneamento.
      */
     public Terreno(
         final double valorImovel,

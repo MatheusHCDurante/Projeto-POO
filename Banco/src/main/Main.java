@@ -24,11 +24,23 @@ import util.InterfaceTerreno;
 
 public class Main {
     /**
+     * Construtor privado para impedir a criação de objetos da classe.
+     */
+    private Main() {
+    }
+    /**
      * Definindo lista que guardara os financiamentos.
      */
-    public static List<Financiamento> listaDeFinanciamento =
+    private static List<Financiamento> listaDeFinanciamento =
         new ArrayList<Financiamento>();
-
+    /**
+     * Obtém a lista de financiamentos.
+     *
+     * @return lista de financiamentos.
+     */
+    public static List<Financiamento> getListaDeFinanciamento() {
+        return listaDeFinanciamento;
+    }
     /**
      * Método para fazer a leitura dos dados salvo no arquivo.
      * "financiamentos.txt".
@@ -138,21 +150,16 @@ public class Main {
         InterfaceApartamento interfaceApartamento = new InterfaceApartamento();
         InterfaceTerreno interfaceTerreno = new InterfaceTerreno();
         int opcaoFinanciamento = interfaceCasa.obterTipoDeFinanciamento();
-
-        Financiamento casa = (new Casa(2000, 1, 1.0, 81, 360));
-        Financiamento casa2 = (new Casa(2500000, 10, 1.8, 200, 800));
-        Financiamento apartamento = (new Apartamento(300000, 20, 3.8, 1, 20));
-        Financiamento apartamento2 = (new Apartamento(154000, 2, 0.8, 3, 75));
-        Financiamento terreno = (new Terreno(1000000, 2, 10, "Residêncial"));
         FileWriter escritor = null;
+
+        carregarFinanciamentosIniciais();
         try {
             escritor = new FileWriter("financiamentos.txt");
-            escritor.write(casa.toString());
-            escritor.write(casa2.toString());
-            escritor.write(apartamento.toString());
-            escritor.write(apartamento2.toString());
-            escritor.write(terreno.toString());
-            // Finaliza o escritor.
+
+            for (Financiamento financiamento : listaDeFinanciamento) {
+                escritor.write(financiamento.toString());
+            }
+        
             escritor.flush();
             escritor.close();
         // Captura de erro de arquivos não encontrado.
@@ -163,8 +170,6 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        carregarFinanciamentosIniciais();
 
         if (opcaoFinanciamento == 1) {
             // Atributos bases de Financiamento + atributos únicos de Casa.

@@ -1,7 +1,7 @@
 package util;
 
 import java.util.InputMismatchException;
-import static main.Main.listaDeFinanciamento;
+import static main.Main.getListaDeFinanciamento;
 import simulation.Terreno;
 
 public final class InterfaceTerreno extends InterfaceUsuario {
@@ -14,7 +14,7 @@ public final class InterfaceTerreno extends InterfaceUsuario {
     private static final int ZONEAMENTO_RESIDENCIAL = 1;
     /** Código para zoneamento comercial. */
     private static final int ZONEAMENTO_COMERCIAL = 2;
-    /** Código para zoneamento industrial. */   
+    /** Código para zoneamento industrial. */
     private static final int ZONEAMENTO_INDUSTRIAL = 3;
 
     // Método para conferir se ha valores negativos ou zerado.
@@ -228,7 +228,7 @@ public final class InterfaceTerreno extends InterfaceUsuario {
         final int prazoFincanciamento,
         final double taxaJurosAnual,
         final String tipoZoneamento) {
-        listaDeFinanciamento.add(new Terreno(valorImovel, prazoFincanciamento,
+        getListaDeFinanciamento().add(new Terreno(valorImovel, prazoFincanciamento,
         taxaJurosAnual, tipoZoneamento));
     }
 }

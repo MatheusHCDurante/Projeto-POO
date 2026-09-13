@@ -1,6 +1,6 @@
 package simulation;
 import java.io.Serializable;
-import static main.Main.listaDeFinanciamento;
+import static main.Main.getListaDeFinanciamento;
 public abstract class Financiamento implements Serializable {
 
     // Atributos (define os atributos da classe abstrata Financiamento).
@@ -87,7 +87,7 @@ public abstract class Financiamento implements Serializable {
      */
     public static double calcularValorTotalImoveis() {
         valorTotalImoveis = 0;
-    for (Financiamento financiamento: listaDeFinanciamento) {
+    for (Financiamento financiamento: getListaDeFinanciamento()) {
         valorTotalImoveis += financiamento.valorImovel;
     }
     return valorTotalImoveis;
@@ -101,7 +101,7 @@ public abstract class Financiamento implements Serializable {
      */
     public static double calcularValorTotalFinanciamentos() {
         valorTotalFinanciamentos = 0;
-        for (Financiamento financiamento : listaDeFinanciamento) {
+        for (Financiamento financiamento : getListaDeFinanciamento()) {
             valorTotalFinanciamentos += financiamento.calcularTotalPagamento();
         }
         return valorTotalFinanciamentos;
