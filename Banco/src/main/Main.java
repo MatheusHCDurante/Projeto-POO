@@ -136,6 +136,15 @@ public final class Main {
             e.printStackTrace();
         }
     }
+    /** Método para mostar os financiamentos */
+    public static void processarFinanciamentos() {
+        System.out.println(
+            "\n=========Financiamentos:=========\n");
+    
+        escreverDadosSerializados();
+        lerDadosSerializados();
+        Financiamento.imprimirValores();
+    }
     /**
      * Método para carregar financiamento iniciais de exemplo.
      */
@@ -216,14 +225,7 @@ public final class Main {
                 e.printStackTrace();
             }
 
-            System.out.println("\n=========Financiamentos:=========\n");
-            // Serialização das informações da lista de Financiamento.
-            escreverDadosSerializados();
-            // Leitura da listaDeFinanciamento serializado.
-            lerDadosSerializados();
-
-            // Imprime o valor total dos imovéis e financiamento.
-            Financiamento.imprimirValores();
+            processarFinanciamentos();
 
         // Se o úsuario escolhe a opção 3 inicia o código do Apartamento.
         } else if (opcaoFinanciamento == FINANCIAMENTO_APARTAMENTO) {
@@ -262,13 +264,7 @@ public final class Main {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            System.out.println("\n=========Financiamentos:=========\n");
-            // Serialização das informações da lista de Financiamento.
-            escreverDadosSerializados();
-            // Leitura da listaDeFinanciamento serializado.
-            lerDadosSerializados();
-            // Imprime o valor total dos imovéis e financiamento.
-            Financiamento.imprimirValores();
+            processarFinanciamentos();
 
             // Se o úsuario escolhe a opção 3 inicia o código do Terreno.
         } else if (opcaoFinanciamento == FINANCIAMENTO_TERRENO) {
@@ -306,13 +302,7 @@ public final class Main {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            System.out.println("\n=========Financiamentos:=========\n");
-            // Serialização das informações da lista de Financiamento.
-            escreverDadosSerializados();
-            // Leitura da listaDeFinanciamento serializado.
-            lerDadosSerializados();
-            //  Imprime o valor total dos imovéis e financiamento.
-            Financiamento.imprimirValores();
+            processarFinanciamentos();
         }
     }
 }
