@@ -29,10 +29,11 @@ public final class Main {
     private Main() {
     }
 
+    /** Código para financiamento de casa. */
     private static final int FINANCIAMENTO_CASA = 1;
-    /** Código para zoneamento comercial. */
+    /** Código para financiamento de apartamento. */
     private static final int FINANCIAMENTO_APARTAMENTO = 2;
-    /** Código para zoneamento industrial. */
+    /** Código para financiamento de terreno. */
     private static final int FINANCIAMENTO_TERRENO = 3;
 
     /**
@@ -239,7 +240,6 @@ public final class Main {
             interfaceApartamento.adicionarALista(
                 valorImovel, prazoFinanciamento, taxaJurosAnual,
                 numeroDeVagasGaragem, numeroDoAndar);
-
             // Instância um novo apartamento.
             // Atraves das informações dadas pelo úsuario.
             Financiamento apartamento3 = new Apartamento(
@@ -262,9 +262,7 @@ public final class Main {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
             System.out.println("\n=========Financiamentos:=========\n");
-
             // Serialização das informações da lista de Financiamento.
             escreverDadosSerializados();
             // Leitura da listaDeFinanciamento serializado.
@@ -308,7 +306,6 @@ public final class Main {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
             System.out.println("\n=========Financiamentos:=========\n");
             // Serialização das informações da lista de Financiamento.
             escreverDadosSerializados();
