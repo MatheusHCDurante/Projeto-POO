@@ -228,11 +228,11 @@ public class InterfaceApartamento extends InterfaceUsuario {
     public int obterNumeroDeVagasGaragem() {
         int numeroDeVagasGaragem = obterInteiroPositivo(
             "Digite o número de vagas: ");
-    
+
         System.out.printf(
             "O número de vagas é %d.%n",
             numeroDeVagasGaragem);
-    
+
             return numeroDeVagasGaragem;
         }
 
@@ -245,7 +245,7 @@ public class InterfaceApartamento extends InterfaceUsuario {
     public int obterNumeroDoAndar() {
         int numeroDoAndar = obterInteiroPositivo(
             "Digite o andar do apartamento: ");
-    
+
         System.out.printf(
             "O andar do apartamento é %d.%n",
             numeroDoAndar);
