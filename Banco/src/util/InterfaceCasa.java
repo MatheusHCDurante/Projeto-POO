@@ -13,8 +13,10 @@ public final class InterfaceCasa extends InterfaceUsuario {
     /**
      * Método para conferir se ha valores negativos ou zerado.
      * Para números reais.
+     *
+     * @param valor Valor recebido.
      */
-    private void conferirValoresNegativosOuZeroDouble(double valor)
+    private void conferirValoresNegativosOuZeroDouble(final double valor)
         throws ValoresNegativosOuIgualZeroException {
             if (valor <= 0) {
                 throw new ValoresNegativosOuIgualZeroException(
@@ -24,8 +26,10 @@ public final class InterfaceCasa extends InterfaceUsuario {
     /**
      * Método para conferir se ha valores negativos ou zerado.
      * Para números inteiros.
+     *
+     * @param valor Valor recebido.
      */
-    private void conferirValoresNegativosOuZeroInt(int valor)
+    private void conferirValoresNegativosOuZeroInt(final int valor)
         throws ValoresNegativosOuIgualZeroException {
             if (valor <= 0) {
                 throw new ValoresNegativosOuIgualZeroException(
@@ -35,8 +39,10 @@ public final class InterfaceCasa extends InterfaceUsuario {
     /**
      * Método para conferir Valor minimo do terreno.
      * Para números inteiros.
+     *
+     * @param valor Valor do terreno.
      */
-    private void conferirValoresMinimoImovel(double valor)
+    private void conferirValoresMinimoImovel(final double valor)
         throws ValoresMinimoImovelException {
             if (valor < VALOR_MIN_TERRENO) {
                 throw new ValoresMinimoImovelException(
@@ -46,8 +52,10 @@ public final class InterfaceCasa extends InterfaceUsuario {
     /**
      * Método para conferir se ha valores acima do permitido.
      * Para números reais, O VALOR MÍNIMO E MÁXIMO PODE SER ALTERADO.
+     *
+     * @param valor Valor de juros.
      */
-    private void conferirValoresNaoPermitidosDouble(double valor)
+    private void conferirValoresNaoPermitidosDouble(final double valor)
         throws ValoresAcimaOuAbaixoDoPermitidoException {
             // Caso queira alterar o valor maximo ou mínimo.
             // NÃO ESQUECER DE MUDAR A MENSAGEM JUNTO.
@@ -58,13 +66,14 @@ public final class InterfaceCasa extends InterfaceUsuario {
             }
     }
     /**
-     * Método abstrato da InterfaceUsuario sobrescrito para obter o valor da casa.
-     * 
+     * Método abstrato da InterfaceUsuario 
+     * Sobrescrito para obter o valor da casa.
+     *
      * @return Valor do imóvel.
      */
     @Override
     public double obterValorImovel() {
-        while (true) { 
+        while (true) {
             // Valor base do valor do imóvel.
             double valorImovel = 0.0;
             try {
@@ -109,7 +118,7 @@ public final class InterfaceCasa extends InterfaceUsuario {
      */
     @Override
     public int obterPrazoFinanciamento() {
-        while (true) { 
+        while (true) {
             // Valor base do prazo de financiamento.
             int prazoFinanciamento = 0;
             try {
@@ -128,7 +137,7 @@ public final class InterfaceCasa extends InterfaceUsuario {
                 getScanner().next();
                 continue;
             // Captura o erro da entrada de valores negativos ou zerado.
-            }catch (ValoresNegativosOuIgualZeroException e) {
+            } catch (ValoresNegativosOuIgualZeroException e) {
                 // Caso ocorra o erro, informa ao usuário.
                 System.out.println(
                     "Número negativo, porfavor use apenas números positivos");
@@ -136,7 +145,7 @@ public final class InterfaceCasa extends InterfaceUsuario {
             }
             return prazoFinanciamento;
         }
-    } 
+    }
 
     /**
      * Método abstrato da InterfaceUsuario sobrescrito para obter o juros.
@@ -145,7 +154,7 @@ public final class InterfaceCasa extends InterfaceUsuario {
      */
     @Override
     public double obterTaxaJuros() {
-        while (true) { 
+        while (true) {
             // Define o valor base para a taxa de juros anual.
             double taxaJurosAnual = 0;
             try {
@@ -154,12 +163,12 @@ public final class InterfaceCasa extends InterfaceUsuario {
                 System.out.println("Digite a taxa de juros anual: ");
                 taxaJurosAnual += getScanner().nextDouble();
                 // Informa ao usuário o juros anual informado por ele.
-                System.out.println("A taxa de juros anual é: " 
+                System.out.println("A taxa de juros anual é: "
                 + taxaJurosAnual + "%\n");
                 // Limita e confere o juros imposto no financiamento.
                 conferirValoresNaoPermitidosDouble(taxaJurosAnual);
             // Captura o erro entrada de dado errado.
-            // Nesse caso qualquer caractere que não seja um número inteiro. 
+            // Nesse caso qualquer caractere que não seja um número inteiro.
             }  catch (InputMismatchException e) {
                 System.out.println("Porfavor use apenas númerais");
                 getScanner().next();
@@ -169,7 +178,7 @@ public final class InterfaceCasa extends InterfaceUsuario {
                 // Caso ocorra o erro, informa ao usuário.
                 System.out.println(
                     "O valor informado está fora do permitido."
-                    + "O valor minimo de juros possível 0.1% e o maximo é 30.0%");
+                    + "O minimo de juros possível 0.1% e o maximo é 30.0%");
                 continue;
             }
             return taxaJurosAnual; 
@@ -222,14 +231,15 @@ public final class InterfaceCasa extends InterfaceUsuario {
      * @return Tamanho do terreno
      */
     public double obterTamanhoDoTerreno() {
-        while (true) { 
+        while (true) {
             // Define o valor base para o tamanho do terreno.
             double tamanhoDoTerreno = 0;
             try {
                 // Solicita ao usuário o tamanho do terreno.
                 // E substitui o valor atraves do scanner.
                 System.out.println(
-                    "Digite o tamanho do terreno, em que a casa está localizada: ");
+                    "Digite o tamanho do terreno,"
+                    + "em que a casa está localizada: ");
                 tamanhoDoTerreno += getScanner().nextDouble();
                 conferirValoresNegativosOuZeroDouble(tamanhoDoTerreno);
                 // Informa ao usuário o tamanho do terreno informado por ele.
@@ -258,16 +268,15 @@ public final class InterfaceCasa extends InterfaceUsuario {
      * @param valorImovel armazena o valor o imóvel.
      * @param prazoFincanciamento armazena prazo de financiamento.
      * @param taxaJurosAnual armazena juros anual em %.
-     * @param tipoZoneamento armazena o tipo de zoneamento.
      * @param tamanhoAreaConstruida tamnho de área construida.
      * @param tamanhoDoTerreno tamanho do terreno.
      */
     public void adicionarALista(
-        double valorImovel,
-        int prazoFincanciamento,
-        double taxaJurosAnual,
-        double tamanhoAreaConstruida,
-        double tamanhoDoTerreno) {
+        final double valorImovel,
+        final int prazoFincanciamento,
+        final double taxaJurosAnual,
+        final double tamanhoAreaConstruida,
+        final double tamanhoDoTerreno) {
     getListaDeFinanciamento().add(
         new Casa(valorImovel,
             prazoFincanciamento,
