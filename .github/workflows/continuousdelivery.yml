@@ -1,0 +1,22 @@
+name: Continuous Delivery
+on: 
+
+  push:
+    branches:
+        - main
+
+jobs:
+  deliver:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Check out repository code
+        uses: actions/checkout@v6
+
+      - name: Simulando Continuous Delivery
+        uses: actions/upload-artifact@v7
+        with:
+          name: Projeto.zip
+          path: |
+            scr/
+          
