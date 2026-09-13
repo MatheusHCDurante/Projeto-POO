@@ -17,7 +17,7 @@ public class InterfaceApartamento extends InterfaceUsuario {
      *
      * @param valor Valor recebido.
      */
-    private void conferirValoresNegativosOuZeroDouble(double valor)
+    private void conferirValoresNegativosOuZeroDouble(final double valor)
         throws ValoresNegativosOuIgualZeroException {
             if (valor <= 0) {
                 throw new ValoresNegativosOuIgualZeroException(
@@ -31,7 +31,7 @@ public class InterfaceApartamento extends InterfaceUsuario {
      *
      * @param valor Valor recebido.
      */
-    private void conferirValoresNegativosOuZeroInt(int valor)
+    private void conferirValoresNegativosOuZeroInt(final int valor)
         throws ValoresNegativosOuIgualZeroException {
             if (valor <= 0) {
                 throw new ValoresNegativosOuIgualZeroException(
@@ -45,7 +45,7 @@ public class InterfaceApartamento extends InterfaceUsuario {
      *
      * @param valor Valor do terreno.
      */
-    private void conferirValoresMinimoImovel(double valor)
+    private void conferirValoresMinimoImovel(final double valor)
         throws ValoresMinimoImovelException {
             if (valor < VALOR_MIN_TERRENO) {
                 throw new ValoresMinimoImovelException(
@@ -55,10 +55,10 @@ public class InterfaceApartamento extends InterfaceUsuario {
     /**
      * Método para conferir se ha valores acima do permitido.
      * Para números reais, O VALOR MÍNIMO E MÁXIMO PODE SER ALTERADO.
-     * 
+     *
      * @param valor Valor recebido.
      */
-    private void conferirValoresNaoPermitidosDouble(double valor)
+    private void conferirValoresNaoPermitidosDouble(final double valor)
         throws ValoresAcimaOuAbaixoDoPermitidoException {
         // Caso queira alterar o valor maximo ou mínimo .
             // NÃO ESQUECER DE MUDAR A MENSAGEM JUNTO.
@@ -77,7 +77,7 @@ public class InterfaceApartamento extends InterfaceUsuario {
      */
     @Override
     public double obterValorImovel() {
-        while (true) { 
+        while (true) {
             // Valor base do valor do imóvel.
             double valorImovel = 0.0;
             try {
@@ -158,7 +158,7 @@ public class InterfaceApartamento extends InterfaceUsuario {
      */
     @Override
     public double obterTaxaJuros() {
-        while (true) { 
+        while (true) {
             // Define o valor base para a taxa de juros anual.
             double taxaJurosAnual = 0;
             try {
@@ -167,8 +167,8 @@ public class InterfaceApartamento extends InterfaceUsuario {
                 System.out.println("Digite a taxa de juros anual: ");
                 taxaJurosAnual += getScanner().nextDouble();
                 // Informa ao usuário o juros anual informado por ele.
-                System.out.println("A taxa de juros anual é: " 
-                + taxaJurosAnual +"%\n");
+                System.out.println("A taxa de juros anual é: "
+                + taxaJurosAnual + "%\n");
                 // Limita e confere o juros imposto no financiamento.
                 conferirValoresNaoPermitidosDouble(taxaJurosAnual);
             // Captura o erro entrada de dado errado.
@@ -178,12 +178,12 @@ public class InterfaceApartamento extends InterfaceUsuario {
                 System.out.println("Porfavor use apenas númerais");
                 getScanner().next();
                 continue;
-            // Captura o erro da entrada de valores acima ou abaixo do permitido.
+            // Captura o erro de valores acima ou abaixo do permitido.
             } catch (ValoresAcimaOuAbaixoDoPermitidoException e) {
                 // Caso ocorra o erro, informa ao usuário.
                 System.out.println(
                     "O valor informado está fora do permitido."
-                    + "O valor minimo de juros possível 0.1% e o maximo é 30.0%");
+                    + "O minimo de juros possível 0.1% e o maximo é 30.0%");
                 continue;
             }
             return taxaJurosAnual;
@@ -197,19 +197,20 @@ public class InterfaceApartamento extends InterfaceUsuario {
      * @return Número de vagas de garagem.
      */
     public int obterNumeroDeVagasGaragem() {
-        while (true) { 
+        while (true) {
             // Define o valor base para o número de vagas na garagem.
             int numeroDeVagasGaragem = 0;
             try {
-                // Solicita ao usuário o número de vagas, e substitui o valor atraves do scanner.
+                // Solicita ao usuário o número de vagas.
+                // E substitui o valor atraves do scanner.
                 System.out.println("Digite o número de vagas na garagem; ");
                 numeroDeVagasGaragem += getScanner().nextInt();
-                // Informa ao usuário o número de vagas na garagem informado por ele.
+                // Informa ao usuário o número de vagas na garagem..
                 System.out.println("O número de vagas é: " + numeroDeVagasGaragem);
                 // Confere se há erro relacionado a valores negativos ou zerado.
                 conferirValoresNegativosOuZeroDouble(numeroDeVagasGaragem);
             // Captura o erro entrada de dado errado.
-            // Nesse caso qualquer caractere que não seja um número inteiro. 
+            // Nesse caso qualquer caractere que não seja um número inteiro.
             }  catch (InputMismatchException e) {
                 // Caso ocorra o erro, informa ao usuário.
                 System.out.println("Porfavor use apenas númerais");
@@ -233,7 +234,7 @@ public class InterfaceApartamento extends InterfaceUsuario {
      * @return Andar do apartamento
      */
     public int obterNumeroDoAndar() {
-        while (true) { 
+        while (true) {
             // Define o valor base para o número de vagas na garagem.
             int numeroDoAndar = 0;
             try {
@@ -275,11 +276,11 @@ public class InterfaceApartamento extends InterfaceUsuario {
      * @param numeroDoAndar andar do apartamento.
      */
     public void adicionarALista(
-        double valorImovel,
-        int prazoFincanciamento,
-        double taxaJurosAnual,
-        int numeroDeVagasGaragem,
-        int numeroDoAndar) {
+        final double valorImovel,
+        final int prazoFincanciamento,
+        final double taxaJurosAnual,
+        final int numeroDeVagasGaragem,
+        final int numeroDoAndar) {
         getListaDeFinanciamento().add(
             new Apartamento(
                 valorImovel,
