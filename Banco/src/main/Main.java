@@ -136,11 +136,11 @@ public final class Main {
             e.printStackTrace();
         }
     }
-    /** Método para mostar os financiamentos */
+    /** Método para mostar os financiamentos. */
     public static void processarFinanciamentos() {
         System.out.println(
             "\n=========Financiamentos:=========\n");
-    
+
         escreverDadosSerializados();
         lerDadosSerializados();
         Financiamento.imprimirValores();
