@@ -19,39 +19,39 @@ public final class InterfaceTerreno extends InterfaceUsuario {
 
     // Método para conferir se ha valores negativos ou zerado.
     private void conferirValoresNegativosOuZeroDouble(final double valor)
-    throws ValoresNegativosOuIgualZeroException {
-        if (valor <= 0) {
-            throw new ValoresNegativosOuIgualZeroException(
-                "O valor informado é zero ou negativo.");
+        throws ValoresNegativosOuIgualZeroException {
+            if (valor <= 0) {
+                throw new ValoresNegativosOuIgualZeroException(
+                    "O valor informado é zero ou negativo.");
+            }
         }
-    }
     private void conferirValoresMinimoImovel(final double valor)
-    throws ValoresMinimoImovelException {
-        if (valor < VALOR_MIN_TERRENO) {
-            throw new ValoresMinimoImovelException(
-                "O valor minimo de deve ser 200000,00.");
+        throws ValoresMinimoImovelException {
+            if (valor < VALOR_MIN_TERRENO) {
+                throw new ValoresMinimoImovelException(
+                    "O valor minimo de deve ser 200000,00.");
+            }
         }
-    }
     // Método para conferir se ha valores negativos ou zerado.
     private void conferirValoresNegativosOuZeroInt(final int valor)
-    throws ValoresNegativosOuIgualZeroException {
-        if (valor <= 0) {
-            throw new ValoresNegativosOuIgualZeroException(
-                "O valor informado é zero ou negativo.");
+        throws ValoresNegativosOuIgualZeroException {
+            if (valor <= 0) {
+                throw new ValoresNegativosOuIgualZeroException(
+                    "O valor informado é zero ou negativo.");
+            }
         }
-    }
     // Método para conferir se ha valores acima do permitido.
     // O VALOR MÍNIMO E MÁXIMO PODE SER ALTERADO.
     private void conferirValoresNaoPermitidosDouble(final double valor)
-    throws ValoresAcimaOuAbaixoDoPermitidoException {
-        // Caso queira alterar o valor maximo ou mínimo
-        // NÃO ESQUECER DE MUDAR A MENSAGEM JUNTO
-        if (valor <= 0 || valor > VALOR_MAX_JUROS) {
-            throw new ValoresAcimaOuAbaixoDoPermitidoException(
-                "O valor informado está fora do permitido."
-                + " O mínimo de juros possível 0.1% e o maximo é 30.0%");
+        throws ValoresAcimaOuAbaixoDoPermitidoException {
+            // Caso queira alterar o valor maximo ou mínimo
+            // NÃO ESQUECER DE MUDAR A MENSAGEM JUNTO
+            if (valor <= 0 || valor > VALOR_MAX_JUROS) {
+                throw new ValoresAcimaOuAbaixoDoPermitidoException(
+                    "O valor informado está fora do permitido."
+                    + " O mínimo de juros possível 0.1% e o maximo é 30.0%");
+            }
         }
-    }
 
     // Método abstrato da InterfaceUsuario sobrescrito
     // Para obter o valor do terreno.
