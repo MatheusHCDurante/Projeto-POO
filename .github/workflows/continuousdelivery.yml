@@ -1,11 +1,12 @@
 name: Continuous Delivery
 on: 
-  merge:
+
+  push:
     branches:
         - main
 
 jobs:
-  Explore-GitHub-Actions:
+  deliver:
     runs-on: ubuntu-latest
     steps:
 
