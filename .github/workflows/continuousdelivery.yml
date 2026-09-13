@@ -18,5 +18,6 @@ jobs:
         with:
           name: Projeto.zip
           path: |
-            src/
+            Banco/src/
+            README.md
           
