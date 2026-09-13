@@ -20,9 +20,9 @@ public class Terreno extends Financiamento {
         final double valorImovel,
         final int prazoFinanciamento,
         final double taxaJurosAnual,
-        final String tipoDeZona) {
+        final String tipoZona) {
             super(valorImovel, prazoFinanciamento, taxaJurosAnual);
-            this.tipoDeZona = tipoDeZona;
+            this.tipoDeZona = tipoZona;
         }
 
     /**

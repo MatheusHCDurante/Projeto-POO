@@ -11,9 +11,9 @@ public abstract class Financiamento implements Serializable {
     /** porcentagem de juros anual. */
     private double taxaJurosAnual;
     /** valor inicial total de todos os imóveis simulados. */
-    private static double VALOR_TOTAL_IMOVEIS;
+    private static double valorTotalImoveis;
     /** Valor total dos financiamentos simulados. */
-    private static double VALOR_TOTAL_FINANCIAMENTOS;
+    private static double valorTotalFinanciamentos;
     /** Quantidade de meses em um ano para calculo. */
     private static final int MESES_POR_ANO = 12;
     /** Construtor.
@@ -86,11 +86,11 @@ public abstract class Financiamento implements Serializable {
      * @return Soma dos valor inicial dos imovéis.
      */
     public static double calcularValorTotalImoveis() {
-        VALOR_TOTAL_IMOVEIS = 0;
+        valorTotalImoveis = 0;
     for (Financiamento financiamento: listaDeFinanciamento) {
-        VALOR_TOTAL_IMOVEIS += financiamento.valorImovel;
+        valorTotalImoveis += financiamento.valorImovel;
     }
-    return VALOR_TOTAL_IMOVEIS;
+    return valorTotalImoveis;
     }
 
     /**
@@ -100,11 +100,11 @@ public abstract class Financiamento implements Serializable {
      * @return soma do valor final dos financiamentos.
      */
     public static double calcularValorTotalFinanciamentos() {
-        VALOR_TOTAL_FINANCIAMENTOS = 0;
+        valorTotalFinanciamentos = 0;
         for (Financiamento financiamento : listaDeFinanciamento) {
-            VALOR_TOTAL_FINANCIAMENTOS += financiamento.calcularTotalPagamento();
+            valorTotalFinanciamentos += financiamento.calcularTotalPagamento();
         }
-        return VALOR_TOTAL_FINANCIAMENTOS;
+        return valorTotalFinanciamentos;
     }
 
     // Método imprimir.

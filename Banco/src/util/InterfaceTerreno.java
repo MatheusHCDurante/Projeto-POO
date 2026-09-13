@@ -4,12 +4,18 @@ import java.util.InputMismatchException;
 import static main.Main.listaDeFinanciamento;
 import simulation.Terreno;
 
-public class InterfaceTerreno extends InterfaceUsuario {
+public final class InterfaceTerreno extends InterfaceUsuario {
 
     /** Valor minimo de terreno. */
-    private static final double VALOR_MIN_TERRENO= 200000.0;
+    private static final double VALOR_MIN_TERRENO = 200000.0;
     /** Valor máximo de juros. */
     private static final double VALOR_MAX_JUROS = 30.0;
+    /** Código para zoneamento residencial. */
+    private static final int ZONEAMENTO_RESIDENCIAL = 1;
+    /** Código para zoneamento comercial. */
+    private static final int ZONEAMENTO_COMERCIAL = 2;
+    /** Código para zoneamento industrial. */   
+    private static final int ZONEAMENTO_INDUSTRIAL = 3;
 
     // Método para conferir se ha valores negativos ou zerado.
     private void conferirValoresNegativosOuZeroDouble(final double valor)
@@ -177,17 +183,17 @@ public class InterfaceTerreno extends InterfaceUsuario {
 
                 // Na opção 1, informa a escolha para o úsario.
                 // Retorna a escolha para o sistema, no caso "Residêncial".
-                if (tipoZoneamento == 1) {
+                if (tipoZoneamento == ZONEAMENTO_RESIDENCIAL) {
                     System.out.println("Zoneamento Residêncial.");
                     return "Residêncial.";
                 // Na opção 2, informa a escolha para o úsario.
                 // Retorna a escolha para o sistema, no caso "Comercial.".
-                } else if (tipoZoneamento == 2) {
+                } else if (tipoZoneamento == ZONEAMENTO_COMERCIAL) {
                     System.out.println("Zoneamento comercial.");
                     return "Comercial.";
                 // Na opção 2, informa a escolha para o úsario.
                 // Retorna a escolha para o sistema, no caso "Industrial.".
-                } else if (tipoZoneamento == 3) {
+                } else if (tipoZoneamento == ZONEAMENTO_INDUSTRIAL) {
                     System.out.println("Zoneamento Industrial.");
                     return "Industrial.";
                 // Caso o úsiario use um número além do permitido.

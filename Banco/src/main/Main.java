@@ -119,6 +119,7 @@ public class Main {
     /**
      * Método para carregar financiamento iniciais de exemplo.
      */
+    @SuppressWarnings("MagicNumber")
     public static void carregarFinanciamentosIniciais() {
         listaDeFinanciamento.add(new Casa(2000, 1, 1.0, 81, 360));
         listaDeFinanciamento.add(new Casa(2500000, 10, 1.8, 200, 800));
