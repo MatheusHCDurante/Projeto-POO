@@ -66,7 +66,7 @@ public final class InterfaceCasa extends InterfaceUsuario {
             }
     }
     /**
-     * Método abstrato da InterfaceUsuario 
+     * Método abstrato da InterfaceUsuario
      * Sobrescrito para obter o valor da casa.
      *
      * @return Valor do imóvel.
@@ -181,10 +181,37 @@ public final class InterfaceCasa extends InterfaceUsuario {
                     + "O minimo de juros possível 0.1% e o maximo é 30.0%");
                 continue;
             }
-            return taxaJurosAnual; 
+            return taxaJurosAnual;
         }
     }
+    /**
+     * Obtém um valor decimal positivo informado pelo usuário.
+     * Filtro de erro.
+     * 
+     * @param mensagem mensagem exibida para solicitar o valor.
+     * @return valor decimal informado.
+     */
+    private double filtroDeErroNumeral(final String mensagem) {
+        while (true) {
+            try {
+                System.out.println(mensagem);
 
+                double valor = getScanner().nextDouble();
+
+                conferirValoresNegativosOuZeroDouble(valor);
+
+                return valor;
+
+            } catch (InputMismatchException e) {
+                System.out.println("Porfavor use apenas númerais");
+                getScanner().next();
+
+            } catch (ValoresNegativosOuIgualZeroException e) {
+                System.out.println(
+                    "Número negativo, porfavor use apenas números positivos");
+            }
+        }
+    }
     /**
      * Método próprio para obter o atributo próprio da classe Casa.
      * No caso o tamanho da área construída.
@@ -192,36 +219,14 @@ public final class InterfaceCasa extends InterfaceUsuario {
      * @return Tamanho da área construida.
      */
     public double obterTamanhoAreaConstruida() {
-        while (true) {
-            // Define o valor base para o tamanho da área construida.
-            double tamanhoAreaConstruida = 0;
-            try {
-                // Solicita ao usuário o tamanho da área construida.
-                // E substitui o valor atraves do scanner.
-                System.out.println(
-                    "Digite o tamanho da área construida: ");
-                tamanhoAreaConstruida += getScanner().nextDouble();
-                // Informa ao usuário o tamanho da área construida.
-                System.out.printf("A área do terreno é %.2f m²\n",
-                 tamanhoAreaConstruida);
-                // Confere se há erro de valores negativos ou zerado.
-                conferirValoresNegativosOuZeroDouble(tamanhoAreaConstruida);
-            // Captura o erro entrada de dado errado.
-            // Nesse caso qualquer caractere que não seja um número inteiro.
-            } catch (InputMismatchException e) {
-                // Caso ocorra o erro, informa ao usuário.
-                System.out.println("Porfavor use apenas númerais");
-                getScanner().next();
-                continue;
-            // Captura o erro da entrada de valores negativos ou zerado.
-            } catch (ValoresNegativosOuIgualZeroException e) {
-                // Caso ocorra o erro, informa ao usuário.
-                System.out.println(
-                    "Número negativo, porfavor use apenas números positivos");
-                continue;
-            }
-                return tamanhoAreaConstruida;
-        }
+        double tamanhoAreaConstruida = filtroDeErroNumeral(
+            "Digite o tamanho da área construída:");
+
+        System.out.println(
+            "O tamanho da área construída é: "
+            + tamanhoAreaConstruida + "m²");
+
+        return tamanhoAreaConstruida;
     }
 
     /**
@@ -231,38 +236,15 @@ public final class InterfaceCasa extends InterfaceUsuario {
      * @return Tamanho do terreno
      */
     public double obterTamanhoDoTerreno() {
-        while (true) {
-            // Define o valor base para o tamanho do terreno.
-            double tamanhoDoTerreno = 0;
-            try {
-                // Solicita ao usuário o tamanho do terreno.
-                // E substitui o valor atraves do scanner.
-                System.out.println(
-                    "Digite o tamanho do terreno,"
-                    + "em que a casa está localizada: ");
-                tamanhoDoTerreno += getScanner().nextDouble();
-                conferirValoresNegativosOuZeroDouble(tamanhoDoTerreno);
-                // Informa ao usuário o tamanho do terreno informado por ele.
-                System.out.printf("A área do terreno é %.2f m²\n",
-                    tamanhoDoTerreno);
-            // Captura o erro entrada de dado errado.
-            // Nesse caso qualquer caractere que não seja um número inteiro.
-            } catch (InputMismatchException e) {
-                // Caso ocorra o erro, informa ao usuário.
-                System.out.println("Porfavor use apenas númerais");
-                getScanner().next();
-                continue;
-            // Captura o erro da entrada de valores negativos ou zerado.
-            } catch (ValoresNegativosOuIgualZeroException e) {
-                // Caso ocorra o erro, informa ao usuário.
-                System.out.println(
-                    "Número negativo, porfavor use apenas números positivos");
-                continue;
-            }
-            getScanner().close();
-            return  tamanhoDoTerreno;
+        double tamanhoDoTerreno = filtroDeErroNumeral(
+            "Digite o tamanho do terreno:");
+
+        System.out.println(
+            "O tamanho do terreno é: "
+            + tamanhoDoTerreno + "m²");
+
+        return tamanhoDoTerreno;
         }
-    }
     /**
      * Adiciona uma nova casa à listaDeFinancimanto.
      * @param valorImovel armazena o valor o imóvel.
