@@ -1,4 +1,4 @@
-name: Continuous Integration Inicial
+name: Continuous Integration
 on: 
   pull_request:
     branches:
