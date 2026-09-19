@@ -7,10 +7,7 @@ jobs:
       steps:
         - uses: actions/checkout@v4
         - name: Run Discord Webhook
-        uses: mrrobotdotapp/classic-discord-webhook@main
-        with:
-          id: ${{ secrets.DISCORD_WEBHOOK_ID }}
-          token: ${{ secrets.DISCORD_WEBHOOK_TOKEN }}
-          username: 'Commit Bot'
-
-
+          uses: tsickert/discord-webhook@v7.0.0
+          with:
+            webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
+            content: "Novo commit realizado"
