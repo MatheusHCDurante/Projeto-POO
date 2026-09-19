@@ -10,5 +10,5 @@ jobs:
       - uses: mrrobotdotapp/classic-discord-webhook@main
         with:
           id: ${{ secrets.DISCORD_WEBHOOK_ID }}
-          token: ${{ secrets.DISCORD_WEBHOOK_TOKEN }}"
+          token: ${{ secrets.DISCORD_WEBHOOK_TOKEN }}
           username: 'Commit Bot'
