@@ -1,7 +1,7 @@
 name: Discord
 on:
   - push
-Jobs:
+jobs:
   Discord:
       runs-on: ubuntu-latest
       steps:
