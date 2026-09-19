@@ -7,9 +7,19 @@ jobs:
       steps:
         - uses: actions/checkout@v4
         - name: Run Discord Webhook
-          uses: tsickert/discord-webhook@v7.0.0
-          with:
-            webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
-            content: "Novo commit realizado"
-            flags: true
-            embed-author-name: true
+        uses: rjstone/discord-webhook-notify@v2
+        with:
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          username: Alertas Commit
+          avatarUrl: https://domain/images/custom.png
+          content: Um novo comit foi criado!
+          severity: info # only to make sure the embed is added
+          color: '#ff00aa'
+          title: Commit
+          description: "Um novo commit foi cirado"
+          # details: not needed because we overrode default description.
+          footer: This embed was brought to you by the letter R and the number 4.
+          thumbnailUrl: https://domain/images/thumb.png
+          imageUrl: https://domain/images/banner.png 
+
+
