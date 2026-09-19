@@ -219,7 +219,7 @@ public final class Main {
             // Captura de erro de arquivos não encontrado.
             } catch (FileNotFoundException e) {
                 // Informa o erro ao usuário.
-                System.out.println("Arquivo não encontrado! Reinicando.");
+                System.out.println("Arquivo não encontrado! Reiniciando.");
             // Captura de erro IO.
             } catch (IOException e) {
                 e.printStackTrace();
@@ -259,7 +259,7 @@ public final class Main {
             // Captura de erro de arquivos não encontrado.
             } catch (FileNotFoundException e) {
                 //Informa o erro ao usuário.
-                System.out.println("Arquivo não encontrado! Reinicando.");
+                System.out.println("Arquivo não encontrado! Reiniciando.");
             // Captura de erro IO.
             } catch (IOException e) {
                 e.printStackTrace();
@@ -297,7 +297,7 @@ public final class Main {
             // Captura de erro de arquivos não encontrado.
             } catch (FileNotFoundException e) {
                 // Informa o erro ao usuário.
-                System.out.println("Arquivo não encontrado! Reinicando.");
+                System.out.println("Arquivo não encontrado! Reiniciando.");
             // Captura de erro IO.
             } catch (IOException e) {
                 e.printStackTrace();
