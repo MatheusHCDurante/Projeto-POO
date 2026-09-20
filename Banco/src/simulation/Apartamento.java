@@ -7,7 +7,7 @@ public class Apartamento extends Financiamento {
     private int numeroDoAndar;
     /** Quantidade meses por ano. */
     private static final int MESES_POR_ANO = 12;
-    /**Valor para transformar % em decimal */
+    /**Valor para transformar % em decimal. */
     private static final int PORCENTO = 100;
 
     /**

@@ -1,3 +1,4 @@
+/** Testes */
 import util.InterfaceApartamento;
 import simulation.Apartamento;
 
@@ -11,11 +12,19 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
-public class testes {
+public class Testes {
     /** Guarda o System.in original para restaurar depois de cada teste. */
     private final InputStream systemInOriginal = System.in;
     /** Guarda Delta faviação de resultado depois da ,. */
     private static final double DELTA = 0.01;
+    private static final double VALOR_IMOVEL = 2000000.0;
+    private static final int PRAZO_ANOS_10 = 10;
+    private static final int PRAZO_ANOS_20 = 20;
+    private static final double TAXA_JUROS = 10.0;
+    private static final int NUMERO_VAGAS = 0;
+    private static final int NUMERO_ANDAR = 1;
+
+
 
     /**Testa calculo de pagamento mensal. */
     @Test
@@ -36,7 +45,8 @@ public class testes {
         final double taxaMensal = (taxaJurosAnual / 100) / 12;
         final double prazoMeses = prazoAnos * 12;
         final double fator = Math.pow(1 + taxaMensal, prazoMeses);
-        final double valorEsperado = valorDoImovel * taxaMensal * fator / (fator - 1);
+        final double valorEsperado = valorDoImovel * taxaMensal * fator 
+        / (fator - 1);
 
         double resultadoAtual = apartamento.calcularPagamentoMensal();
 
@@ -48,8 +58,8 @@ public class testes {
     @Test
     @DisplayName("Pagamento mensal muda quando o prazo aumenta")
     void testPagamentoMensalDiminuiComPrazoMaior() {
-        Apartamento prazoCurto = new Apartamento(200000.0, 5, 10.0, 0, 1);
-        Apartamento prazoLongo = new Apartamento(200000.0, 20, 10.0, 0, 1);
+        Apartamento prazoCurto = new Apartamento(VALOR_IMOVEL, PRAZO_ANOS_10, TAXA_JUROS, NUMERO_VAGAS, NUMERO_ANDAR);
+        Apartamento prazoLongo = new Apartamento(VALOR_IMOVEL, PRAZO_ANOS_20, TAXA_JUROS, NUMERO_VAGAS, NUMERO_ANDAR);
 
         // Quanto maior o prazo, menor tende a ser a parcela mensal.
         assertTrue(prazoLongo.calcularPagamentoMensal()
@@ -67,7 +77,7 @@ public class testes {
     @DisplayName("Rejeita valor negativo e aceita o próximo valor válido")
     void testarValorNegativo() {
         String entrada = "-100\n200000\n";
- 
+
         System.setIn(
             new ByteArrayInputStream(entrada.getBytes())
         );
@@ -77,20 +87,20 @@ public class testes {
  
         double resultado = interfaceApartamento.obterValorImovel();
  
-        assertEquals(200000.0, resultado);
+        assertEquals(VALOR_IMOVEL, resultado);
     }
 
     /**Testa o pagamento total. */
     @Test
     void testarCalcularTotalPagamento() {
 
-        Apartamento apartamento = new Apartamento(200000.0, 10, 10.0, 2, 1);
+        Apartamento apartamento = new Apartamento(PRAZO_ANOS_10,PRAZO_ANOS_10, TAXA_JUROS, NUMERO_VAGAS, NUMERO_ANDAR);
 
         double resultado = apartamento.calcularTotalPagamento();
 
         double valorEsperado = 317161.20;
 
-        assertEquals(valorEsperado, resultado, 0.01);
+        assertEquals(valorEsperado, resultado, DELTA);
     }
 
 
@@ -101,11 +111,10 @@ public class testes {
         final double taxaJurosAnual = 12.0;
  
         Apartamento apartamento = new Apartamento(
-                200000.0, 10, taxaJurosAnual, 1, 2);
- 
-        // (12% ao ano / 100) / 12 meses = 0.01 ao mês
+            PRAZO_ANOS_10, PRAZO_ANOS_10, taxaJurosAnual, NUMERO_VAGAS, NUMERO_ANDAR);
+            
         final double taxaMensalEsperada = (taxaJurosAnual / 100) / 12;
- 
+
         assertEquals(taxaMensalEsperada, apartamento.taxaDeJurosMensal(), DELTA,
                 "A taxa de juros mensal calculada está incorreta.");
     }
