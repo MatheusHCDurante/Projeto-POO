@@ -53,4 +53,4 @@ jobs:
         working-directory: Banco
         run: |
           cd bin
-          jar cfe ../Banco.jar main.Main
+          jar cfe ../Banco.jar main.Main .
