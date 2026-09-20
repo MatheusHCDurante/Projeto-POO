@@ -119,8 +119,11 @@ public class Testes {
             NUMERO_ANDAR);
 
         double resultado = apartamento.calcularTotalPagamento();
-
-        double valorEsperado = VALOR_TESTE;
+        final double taxaMensal = (TAXA_JUROS / 100) / 12;
+        final double prazoMeses = PRAZO_ANOS_10 * 12;
+        final double fator = Math.pow(1 + taxaMensal, prazoMeses);
+        final double pagamentoMensalEsperado = VALOR_IMOVEL * taxaMensal * fator / (fator - 1);
+        final double valorEsperado = pagamentoMensalEsperado * prazoMeses;
 
         assertEquals(valorEsperado, resultado, DELTA);
     }
