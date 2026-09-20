@@ -28,6 +28,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Baixar JUnit
+        working-directory: Banco
         run: |
           mkdir -p lib
           curl -sSL -o lib/junit-platform-console-standalone-6.0.1.jar \
