@@ -35,7 +35,7 @@ public class Testes {
 
     /**Testa calculo de pagamento mensal. */
     @Test
-    @DisplayName("Calcula corretamente o pagamento mensal (Tabela Price)")
+    @DisplayName("Calcula corretamente o pagamento mensal")
     void testCalcularPagamentoMensal() {
         // Dados de entrada
         final double valorDoImovel = 200000.0;
@@ -133,7 +133,7 @@ public class Testes {
         final double taxaJurosAnual = 12.0;
 
         Apartamento apartamento = new Apartamento(
-            PRAZO_ANOS_10,
+            VALOR_IMOVEL,
             PRAZO_ANOS_10,
             taxaJurosAnual,
             NUMERO_VAGAS,
