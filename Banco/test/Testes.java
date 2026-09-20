@@ -17,7 +17,7 @@ public class Testes {
     /** Guarda Delta faviação de resultado depois da ,. */
     private static final double DELTA = 0.01;
     /** Guarda valor do imovel. */
-    private static final double VALOR_IMOVEL = 2000000.0;
+    private static final double VALOR_IMOVEL = 200000.0;
     /** Guarda prazo de 10 anos. */
     private static final int PRAZO_ANOS_10 = 10;
     /** Guarda prazo de 20 anos. */
