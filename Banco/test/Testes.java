@@ -112,7 +112,7 @@ public class Testes {
     void testarCalcularTotalPagamento() {
 
         Apartamento apartamento = new Apartamento(
-            PRAZO_ANOS_10,
+            VALOR_IMOVEL,
             PRAZO_ANOS_10,
             TAXA_JUROS,
             NUMERO_VAGAS,
