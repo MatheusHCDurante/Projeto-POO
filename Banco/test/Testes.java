@@ -28,6 +28,8 @@ public class Testes {
     private static final int NUMERO_VAGAS = 0;
     /** Guarda andar do apartamento. */
     private static final int NUMERO_ANDAR = 1;
+    /** Guarda andar do apartamento. */
+    private static final Double VALOR_TESTE = 317161.20;
 
 
 
@@ -83,7 +85,7 @@ public class Testes {
     }
 
     @AfterEach
-    void restaurarSystemIn() {
+    final void restaurarSystemIn() {
     System.setIn(systemInOriginal);
     }
 
@@ -99,7 +101,7 @@ public class Testes {
 
         InterfaceApartamento interfaceApartamento =
             new InterfaceApartamento();
- 
+
         double resultado = interfaceApartamento.obterValorImovel();
 
         assertEquals(VALOR_IMOVEL, resultado);
@@ -110,7 +112,7 @@ public class Testes {
     void testarCalcularTotalPagamento() {
 
         Apartamento apartamento = new Apartamento(
-            PRAZO_ANOS_10, 
+            PRAZO_ANOS_10,
             PRAZO_ANOS_10,
             TAXA_JUROS,
             NUMERO_VAGAS,
@@ -118,7 +120,7 @@ public class Testes {
 
         double resultado = apartamento.calcularTotalPagamento();
 
-        double valorEsperado = 317161.20;
+        double valorEsperado = VALOR_TESTE;
 
         assertEquals(valorEsperado, resultado, DELTA);
     }
@@ -126,7 +128,7 @@ public class Testes {
 
     /**Testa o calculo de juros mensal. */
     @Test
-    @DisplayName("Calcula corretamente a taxa de juros mensal a partir da anual")
+    @DisplayName("Calcula corretamente a taxa de juros mensal.")
     void testTaxaDeJurosMensal() {
         final double taxaJurosAnual = 12.0;
 
@@ -139,7 +141,10 @@ public class Testes {
 
         final double taxaMensalEsperada = (taxaJurosAnual / 100) / 12;
 
-        assertEquals(taxaMensalEsperada, apartamento.taxaDeJurosMensal(), DELTA,
-                "A taxa de juros mensal calculada está incorreta.");
+        assertEquals(
+            taxaMensalEsperada,
+            apartamento.taxaDeJurosMensal(),
+            DELTA,
+            "A taxa de juros mensal calculada está incorreta.");
     }
 }
