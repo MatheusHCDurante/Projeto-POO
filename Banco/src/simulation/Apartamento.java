@@ -7,6 +7,8 @@ public class Apartamento extends Financiamento {
     private int numeroDoAndar;
     /** Quantidade meses por ano. */
     private static final int MESES_POR_ANO = 12;
+    /**Valor para transformar % em decimal */
+    private static final int PORCENTO = 100;
 
     /**
      * Adiciona ao contrutor os atributos da classe Financiamento.
@@ -59,7 +61,7 @@ public class Apartamento extends Financiamento {
      * @return Porcentagem de juros mensal.
      */
     public double taxaDeJurosMensal() {
-        return getTaxaJurosAnual() / MESES_POR_ANO;
+        return (getTaxaJurosAnual() / PORCENTO) / MESES_POR_ANO;
     }
 
     /**
@@ -80,7 +82,7 @@ public class Apartamento extends Financiamento {
     public double calcularPagamentoMensal() {
         return getValorImovel() * taxaDeJurosMensal()
         * Math.pow((1 + taxaDeJurosMensal()), prazoMensal())
-        / Math.pow((1 + taxaDeJurosMensal()), prazoMensal()) - 1;
+        / (Math.pow((1 + taxaDeJurosMensal()), prazoMensal()) - 1);
     }
     /**
      * Sobrescreve o método abstrato imprimirDados.

@@ -1,0 +1,11 @@
+{
+    "java.project.sourcePaths": [
+        "Banco/src",
+        "Banco/test"
+    ],
+    "java.project.outputPath": "Banco/bin",
+    "java.project.referencedLibraries": [
+        "Banco/lib/*.jar",
+        "Banco/lib/**/*.jar"
+    ]
+}
