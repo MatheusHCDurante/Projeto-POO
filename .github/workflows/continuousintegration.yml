@@ -43,11 +43,7 @@ jobs:
 
       - name: Rodar os testes
         working-directory: Banco
-        run: |
-          java -jar lib/junit-platform-console-standalone-6.0.1.jar \
-          --classpath bin \
-          --scan-classpath \
-          --details tree
+        run: java -jar lib/junit-platform-console-standalone-6.0.1.jar execute --classpath bin --scan-classpath --details tree
 
       - name: Empacotar em .jar
         working-directory: Banco
